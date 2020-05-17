@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 47aecab0010a5e3ae6d20a1b808a08bce79878bd */
+/* 8c5b143e6ec9460563f4ab31c8a931f6698826d1 */
 /* :: Begin x86/avx512dq.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -15856,6 +15856,26 @@ simde_mm_sub_epi64 (simde__m128i a, simde__m128i b) {
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
+simde__m128i
+simde_x_mm_sub_epu32 (simde__m128i a, simde__m128i b) {
+  simde__m128i_private
+    r_,
+    a_ = simde__m128i_to_private(a),
+    b_ = simde__m128i_to_private(b);
+
+  #if defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
+    r_.u32 = a_.u32 - b_.u32;
+  #else
+    SIMDE_VECTORIZE
+    for (size_t i = 0 ; i < (sizeof(r_.u32) / sizeof(r_.u32[0])) ; i++) {
+      r_.u32[i] = a_.u32[i] - b_.u32[i];
+    }
+  #endif
+
+  return simde__m128i_from_private(r_);
+}
+
+SIMDE_FUNCTION_ATTRIBUTES
 simde__m128d
 simde_mm_sub_pd (simde__m128d a, simde__m128d b) {
 #if defined(SIMDE_X86_SSE2_NATIVE)
@@ -19384,6 +19404,26 @@ simde_mm_mullo_epi32 (simde__m128i a, simde__m128i b) {
 #if defined(SIMDE_X86_SSE4_1_ENABLE_NATIVE_ALIASES)
 #  define _mm_mullo_epi32(a, b) simde_mm_mullo_epi32(a, b)
 #endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m128i
+simde_x_mm_mullo_epu32 (simde__m128i a, simde__m128i b) {
+  simde__m128i_private
+    r_,
+    a_ = simde__m128i_to_private(a),
+    b_ = simde__m128i_to_private(b);
+
+    #if defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
+      r_.u32 = a_.u32 * b_.u32;
+    #else
+      SIMDE_VECTORIZE
+      for (size_t i = 0 ; i < (sizeof(r_.u32) / sizeof(r_.u32[0])) ; i++) {
+        r_.u32[i] = a_.u32[i] * b_.u32[i];
+      }
+    #endif
+
+  return simde__m128i_from_private(r_);
+}
 
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m128i
