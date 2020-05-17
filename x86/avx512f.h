@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 635a43f2d70d8a0de77d793266616a2adeb80544 */
+/* 47aecab0010a5e3ae6d20a1b808a08bce79878bd */
 /* :: Begin x86/avx512f.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -19637,6 +19637,25 @@ int simde_mm_cmpestrs (simde__m128i a, int la, simde__m128i b, int lb, const int
 #endif
 #if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES)
   #define _mm_cmpestrs(a, la, b, lb, imm8) simde_mm_cmpestrs(a, la, b, lb, imm8)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+int simde_mm_cmpestrz (simde__m128i a, int la, simde__m128i b, int lb, const int imm8)
+    SIMDE_REQUIRE_CONSTANT_RANGE(imm8, 0, 127) {
+  #if !defined(HEDLEY_PGI_VERSION)
+    /* https://www.pgroup.com/userforum/viewtopic.php?f=4&p=27590&sid=cf89f8bf30be801831fe4a2ff0a2fa6c */
+    (void) a;
+    (void) b;
+  #endif
+  (void) la;
+  (void) lb;
+  return lb <= ((128 / ((imm8 & SIMDE_SIDD_UWORD_OPS) ? 16 : 8)) - 1);
+}
+#if defined(SIMDE_X86_SSE4_2_NATIVE)
+  #define simde_mm_cmpestrz(a, la, b, lb, imm8) _mm_cmpestrz(a, la, b, lb, imm8)
+#endif
+#if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES)
+  #define _mm_cmpestrz(a, la, b, lb, imm8) simde_mm_cmpestrz(a, la, b, lb, imm8)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
