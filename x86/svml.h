@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* b1e4e0c34c695b4b0883ac443d30dd536feaf910 */
+/* 19bc37a87c832d925f4a5d82b05fc58b0aadad81 */
 /* :: Begin x86/svml.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -3960,7 +3960,12 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
 
 #if defined(HUGE_VAL)
   /* Looks like <math.h> or <cmath> has already been included. */
-  #if defined(isnan)
+
+  /* The math.h from libc++ (yes, the C header from the C++ standard
+   * library) will define an isnan function, but not an isnan macro
+   * like the C standard requires.  So, we detect the header guards
+   * macro libc++ uses. */
+  #if defined(isnan) || (defined(_LIBCPP_MATH_H) && !defined(_LIBCPP_CMATH))
     #define SIMDE_MATH_HAVE_MATH_H
   #elif defined(__cplusplus)
     #define SIMDE_MATH_HAVE_CMATH
