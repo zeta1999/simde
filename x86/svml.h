@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 8c5b143e6ec9460563f4ab31c8a931f6698826d1 */
+/* f11544f282376cd06f53e694e9d5fd51b640e67d */
 /* :: Begin x86/svml.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -23134,7 +23134,9 @@ simde_mm_maskload_pd (const simde_float64 mem_addr[HEDLEY_ARRAY_PARAM(4)], simde
 
   SIMDE_VECTORIZE
   for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
-    r_.i64[i] = HEDLEY_REINTERPRET_CAST(int64_t const*, mem_addr)[i] & (mask_.i64[i] >> 63);
+    int64_t tmp;
+    memcpy(&tmp, &(mem_addr[i]), sizeof(simde_float64));
+    r_.i64[i] = tmp & (mask_.i64[i] >> 63);
   }
 
   return simde__m128d_from_private(r_);
