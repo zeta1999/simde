@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* f11544f282376cd06f53e694e9d5fd51b640e67d */
+/* aa6c5739159ca2a862b50258ad8f61afed4ca94f */
 /* :: Begin x86/sse4.1.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -3824,7 +3824,7 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
 #if !defined(SIMDE_MATH_H)
 
 
-#if defined(__has_builtin) && 0
+#if defined(__has_builtin)
   #define SIMDE_MATH_BUILTIN_LIBM(func) __has_builtin(__builtin_##func)
 #elif \
     HEDLEY_INTEL_VERSION_CHECK(13,0,0) || \
@@ -3896,7 +3896,7 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
 #endif
 
 #if !defined(simde_math_isnormal)
-  #if SIMDE_MATH_BUILTIN_LIBM(isnnormal)
+  #if SIMDE_MATH_BUILTIN_LIBM(isnormal)
     #define simde_math_isnormal(v) __builtin_isnormal(v)
   #elif defined(isnormal) || defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_isnormal(v) isnormal(v)
@@ -11710,7 +11710,7 @@ simde_mm_cmpeq_epi32 (simde__m128i a, simde__m128i b) {
   #elif defined(SIMDE_POWER_ALTIVEC_P5)
     r_.altivec_i32 = (SIMDE_POWER_ALTIVEC_VECTOR(signed int)) vec_cmpeq(a_.altivec_i32, b_.altivec_i32);
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
-    r_.i32 = (a_.i32 == b_.i32);
+    r_.i32 = HEDLEY_STATIC_CAST(__typeof__(r_.i32), a_.i32 == b_.i32);
   #else
     SIMDE_VECTORIZE
     for (size_t i = 0 ; i < (sizeof(r_.i32) / sizeof(r_.i32[0])) ; i++) {
@@ -17986,7 +17986,7 @@ simde_x_mm_blendv_epi32 (simde__m128i a, simde__m128i b, simde__m128i mask) {
 #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
   #if defined(HEDLEY_INTEL_VERSION_CHECK)
     __typeof__(mask_.i32) z = { 0, 0, 0, 0 };
-    mask_.i32 = mask_.i32 < z;
+    mask_.i32 = HEDLEY_STATIC_CAST(__typeof__(mask_.i32), mask_.i32 < z);
   #else
     mask_.i32 >>= (CHAR_BIT * sizeof(mask_.i32[0])) - 1;
   #endif
