@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 19bc37a87c832d925f4a5d82b05fc58b0aadad81 */
+/* 000f9bac0d339d32ec7d06d32f362e381cf4f960 */
 /* :: Begin x86/svml.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -17191,7 +17191,9 @@ simde_mm_shuffle_epi8 (simde__m128i a, simde__m128i b) {
       b_.neon_i8 = vandq_s8(b_.neon_i8, vdupq_n_s8(HEDLEY_STATIC_CAST(int8_t, (1 << 7) | 15)));
 
       /* Convert a from an int8x16_t to an int8x8x2_t */
-      int8x8x2_t i = { .val = { vget_low_s8(a_.neon_i8), vget_high_s8(a_.neon_i8) } };
+      int8x8x2_t i;
+      i.val[0] = vget_low_s8(a_.neon_i8);
+      i.val[1] = vget_high_s8(a_.neon_i8);
 
       /* Table lookups */
       int8x8_t l = vtbl2_s8(i, vget_low_s8(b_.neon_i8));
@@ -24656,8 +24658,8 @@ simde_mm256_unpacklo_pd (simde__m256d a, simde__m256d b) {
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m256
 simde_mm256_zextps128_ps256 (simde__m128 a) {
-#if defined(SIMDE_X86_AVX_NATIVE) && !defined(SIMDE_BUG_GCC_REV_274313)
-  return _mm256_zextps128_ps256(a);
+#if defined(SIMDE_X86_AVX_NATIVE)
+  return _mm256_insertf128_ps(_mm256_setzero_ps(), a, 0);
 #else
   simde__m256_private r_;
 
@@ -24674,8 +24676,8 @@ simde_mm256_zextps128_ps256 (simde__m128 a) {
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m256d
 simde_mm256_zextpd128_pd256 (simde__m128d a) {
-#if defined(SIMDE_X86_AVX_NATIVE) && !defined(SIMDE_BUG_GCC_REV_274313)
-  return _mm256_zextpd128_pd256(a);
+#if defined(SIMDE_X86_AVX_NATIVE)
+  return _mm256_insertf128_pd(_mm256_setzero_pd(), a, 0);
 #else
   simde__m256d_private r_;
 
@@ -24692,8 +24694,8 @@ simde_mm256_zextpd128_pd256 (simde__m128d a) {
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m256i
 simde_mm256_zextsi128_si256 (simde__m128i a) {
-#if defined(SIMDE_X86_AVX_NATIVE) && !defined(SIMDE_BUG_GCC_REV_274313)
-  return _mm256_zextsi128_si256(a);
+#if defined(SIMDE_X86_AVX_NATIVE)
+  return _mm256_insertf128_si256(_mm256_setzero_si256(), a, 0);
 #else
   simde__m256i_private r_;
 
