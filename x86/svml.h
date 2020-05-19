@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 000f9bac0d339d32ec7d06d32f362e381cf4f960 */
+/* 1248258ec7cc5a403619caf7b5143efaa2e58a08 */
 /* :: Begin x86/svml.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -19734,6 +19734,46 @@ simde_mm_cmpgt_epi64 (simde__m128i a, simde__m128i b) {
 #  define _mm_cmpgt_epi64(a, b) simde_mm_cmpgt_epi64(a, b)
 #endif
 
+SIMDE_FUNCTION_ATTRIBUTES
+int
+simde_mm_cmpistrs_8_(simde__m128i a) {
+  simde__m128i_private a_= simde__m128i_to_private(a);
+  const int upper_bound = (128 / 8) - 1;
+  int a_invalid = 0;
+  SIMDE_VECTORIZE
+  for (int i = 0 ; i < upper_bound ; i++) {
+    if(!a_.i8[i])
+      a_invalid = 1;
+  }
+  return a_invalid;
+}
+
+SIMDE_FUNCTION_ATTRIBUTES
+int
+simde_mm_cmpistrs_16_(simde__m128i a) {
+  simde__m128i_private a_= simde__m128i_to_private(a);
+  const int upper_bound = (128 / 16) - 1;
+  int a_invalid = 0;
+  SIMDE_VECTORIZE
+  for (int i = 0 ; i < upper_bound ; i++) {
+    if(!a_.i16[i])
+      a_invalid = 1;
+  }
+  return a_invalid;
+}
+
+#if defined(SIMDE_X86_SSE4_2_NATIVE)
+  #define simde_mm_cmpistrs(a, b, imm8) _mm_cmpistrs(a, b, imm8)
+#else
+  #define simde_mm_cmpistrs(a, b, imm8) \
+     (((imm8) & SIMDE_SIDD_UWORD_OPS) \
+       ? simde_mm_cmpistrs_16_((a)) \
+       : simde_mm_cmpistrs_8_((a)))
+#endif
+#if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES)
+  #define _mm_cmpistrs(a, b, imm8) simde_mm_cmpistrs(a, b, imm8)
+#endif
+
 SIMDE_END_DECLS_
 
 HEDLEY_DIAGNOSTIC_POP
@@ -26764,6 +26804,26 @@ simde_mm256_mullo_epi32 (simde__m256i a, simde__m256i b) {
 
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m256i
+simde_x_mm256_mullo_epu32 (simde__m256i a, simde__m256i b) {
+  simde__m256i_private
+    r_,
+    a_ = simde__m256i_to_private(a),
+    b_ = simde__m256i_to_private(b);
+
+    #if defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
+      r_.u32 = a_.u32 * b_.u32;
+    #else
+      SIMDE_VECTORIZE
+      for (size_t i = 0 ; i < (sizeof(r_.u32) / sizeof(r_.u32[0])) ; i++) {
+        r_.u32[i] = a_.u32[i] * b_.u32[i];
+      }
+    #endif
+
+  return simde__m256i_from_private(r_);
+}
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m256i
 simde_mm256_or_si256 (simde__m256i a, simde__m256i b) {
 #if defined(SIMDE_X86_AVX2_NATIVE)
   return _mm256_or_si256(a, b);
@@ -27689,6 +27749,26 @@ simde_mm256_sub_epi64 (simde__m256i a, simde__m256i b) {
   #undef _mm256_sub_epi64
   #define _mm256_sub_epi64(a, b) simde_mm256_sub_epi64(a, b)
 #endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m256i
+simde_x_mm256_sub_epu32 (simde__m256i a, simde__m256i b) {
+  simde__m256i_private
+    r_,
+    a_ = simde__m256i_to_private(a),
+    b_ = simde__m256i_to_private(b);
+
+  #if defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
+    r_.u32 = a_.u32 - b_.u32;
+  #else
+    SIMDE_VECTORIZE
+    for (size_t i = 0 ; i < (sizeof(r_.u32) / sizeof(r_.u32[0])) ; i++) {
+      r_.u32[i] = a_.u32[i] - b_.u32[i];
+    }
+  #endif
+
+  return simde__m256i_from_private(r_);
+}
 
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m256i
@@ -33842,6 +33922,25 @@ simde_mm256_rem_epi32 (simde__m256i a, simde__m256i b) {
 
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m256i
+simde_mm256_idivrem_epi32 (simde__m256i * mem_addr, simde__m256i a, simde__m256i b) {
+  #if defined(SIMDE_X86_SVML_NATIVE) && defined(SIMDE_X86_SSE2_NATIVE)
+    return _mm256_idivrem_epi32(mem_addr, a, b);
+  #else
+    simde__m256i r;
+
+    r = simde_mm256_div_epi32(a, b);
+    *mem_addr = simde_mm256_sub_epi32(a, simde_mm256_mullo_epi32(r, b));
+
+    return r;
+  #endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+  #undef _mm256_idivrem_epi32
+  #define _mm256_idivrem_epi32(mem_addr, a, b) simde_mm256_idivrem_epi32((mem_addr),(a), (b))
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m256i
 simde_mm256_rem_epi64 (simde__m256i a, simde__m256i b) {
   #if defined(SIMDE_X86_SVML_NATIVE) && defined(SIMDE_X86_AVX_NATIVE)
     return _mm256_rem_epi64(a, b);
@@ -33953,6 +34052,25 @@ simde_mm256_rem_epu32 (simde__m256i a, simde__m256i b) {
   #define _mm256_rem_epu32(a, b) simde_mm256_rem_epu32(a, b)
   #undef _mm256_urem_epu32
   #define _mm256_urem_epu32(a, b) simde_mm256_rem_epu32(a, b)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m256i
+simde_mm256_udivrem_epi32 (simde__m256i * mem_addr, simde__m256i a, simde__m256i b) {
+  #if defined(SIMDE_X86_SVML_NATIVE) && defined(SIMDE_X86_SSE2_NATIVE)
+    return _mm256_udivrem_epi32(mem_addr, a, b);
+  #else
+    simde__m256i r;
+
+    r = simde_mm256_div_epu32(a, b);
+    *mem_addr = simde_x_mm256_sub_epu32(a, simde_x_mm256_mullo_epu32(r, b));
+
+    return r;
+  #endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+  #undef _mm256_udivrem_epi32
+  #define _mm256_udivrem_epi32(mem_addr, a, b) simde_mm256_udivrem_epi32((mem_addr),(a), (b))
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
