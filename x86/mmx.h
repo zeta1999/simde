@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 1248258ec7cc5a403619caf7b5143efaa2e58a08 */
+/* 6ee040c68d6e0e96fdb9b760ec67a90c769c7391 */
 /* :: Begin x86/mmx.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -3136,7 +3136,7 @@ HEDLEY_DIAGNOSTIC_POP
   #define SIMDE_ASSUME_ALIGNED(alignment, v) (__extension__ ({ \
       __typeof__(v) simde_assume_aligned_t_ = (v); \
       __assume_aligned(simde_assume_aligned_t_, alignment); \
-      simde_assmue_aligned_t_; \
+      simde_assume_aligned_t_; \
     }))
 #else
   #define SIMDE_ASSUME_ALIGNED(alignment, v) (v)
@@ -3876,6 +3876,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
   #endif
 #endif
 
+#if !defined(simde_math_sin)
+  #if SIMDE_MATH_BUILTIN_LIBM(sin)
+    #define simde_math_sin(v) __builtin_sin(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_sin(v) std::sin(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_sin(v) sin(v)
+  #endif
+#endif
+
+#if !defined(simde_math_sinf)
+  #if SIMDE_MATH_BUILTIN_LIBM(sinf)
+    #define simde_math_sinf(v) __builtin_sinf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_sinf(v) std::sin(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_sinf(v) sinf(v)
+  #endif
+#endif
+
 #if !defined(simde_math_sqrt)
   #if SIMDE_MATH_BUILTIN_LIBM(sqrt)
     #define simde_math_sqrt(v) __builtin_sqrt(v)
@@ -4400,6 +4420,9 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
 #    endif
 #    if defined(SIMDE_ARCH_AARCH64)
 #      define SIMDE_BUG_GCC_94488
+#    endif
+#    if defined(SIMDE_ARCH_POWER)
+#      define SIMDE_BUG_GCC_95227
 #    endif
 #  elif defined(__clang__)
 #    if defined(SIMDE_ARCH_AARCH64)
