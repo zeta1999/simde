@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 7b3e46778edc39ac16658e79c5fabd3c0f59cbf5 */
+/* 482124f3cb3a48e98449ba75c182afc9e44ea48f */
 /* :: Begin x86/mmx.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -4431,7 +4431,7 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
 #    if defined(SIMDE_ARCH_X86) && !defined(SIMDE_ARCH_AMD64)
 #      define SIMDE_BUG_GCC_94482
 #    endif
-#    if defined(SIMDE_ARCH_AARCH64)
+#    if !HEDLEY_GCC_VERSION_CHECK(9,4,0) && defined(SIMDE_ARCH_AARCH64)
 #      define SIMDE_BUG_GCC_94488
 #    endif
 #    if defined(SIMDE_ARCH_POWER)
