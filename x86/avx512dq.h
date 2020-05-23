@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 11f1383067d7696370c1f9cf9b50b73b6c503cb3 */
+/* 7132e0773278060b558ecb4de8fa99b2048224ff */
 /* :: Begin x86/avx512dq.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -4280,6 +4280,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_sinf(v) std::sin(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_sinf(v) sinf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_cos)
+  #if SIMDE_MATH_BUILTIN_LIBM(cos)
+    #define simde_math_cos(v) __builtin_cos(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cos(v) std::cos(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cos(v) cos(v)
+  #endif
+#endif
+
+#if !defined(simde_math_cosf)
+  #if SIMDE_MATH_BUILTIN_LIBM(cosf)
+    #define simde_math_cosf(v) __builtin_cosf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cosf(v) std::cos(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cosf(v) cosf(v)
   #endif
 #endif
 
@@ -34792,6 +34812,34 @@ simde_mm512_broadcastb_epi8 (simde__m128i a) {
 #if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
   #undef _mm512_broadcastb_epi8
   #define _mm512_broadcastb_epi8(a) simde_mm512_broadcastb_epi8(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512i
+simde_mm512_mask_broadcastb_epi8 (simde__m512i src, simde__mmask64 k, simde__m128i a) {
+  #if defined(SIMDE_X86_AVX512BW_NATIVE)
+    return _mm512_mask_broadcastb_epi8(src, k, a);
+  #else
+    return simde_mm512_mask_mov_epi8(src, k, simde_mm512_broadcastb_epi8(a));
+  #endif
+}
+#if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_mask_broadcastb_epi8
+  #define _mm512_mask_broadcastb_epi8(src, k, a) simde_mm512_mask_broadcastb_epi8(src, k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512i
+simde_mm512_maskz_broadcastb_epi8 (simde__mmask64 k, simde__m128i a) {
+  #if defined(SIMDE_X86_AVX512BW_NATIVE)
+    return _mm512_maskz_broadcastb_epi8(k, a);
+  #else
+    return simde_mm512_maskz_mov_epi8(k, simde_mm512_broadcastb_epi8(a));
+  #endif
+}
+#if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_maskz_broadcastb_epi8
+  #define _mm512_maskz_broadcastb_epi8(k, a) simde_mm512_maskz_broadcastb_epi8(k, a)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES

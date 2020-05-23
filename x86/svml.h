@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 11f1383067d7696370c1f9cf9b50b73b6c503cb3 */
+/* 7132e0773278060b558ecb4de8fa99b2048224ff */
 /* :: Begin x86/svml.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -4183,6 +4183,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_sinf(v) std::sin(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_sinf(v) sinf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_cos)
+  #if SIMDE_MATH_BUILTIN_LIBM(cos)
+    #define simde_math_cos(v) __builtin_cos(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cos(v) std::cos(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cos(v) cos(v)
+  #endif
+#endif
+
+#if !defined(simde_math_cosf)
+  #if SIMDE_MATH_BUILTIN_LIBM(cosf)
+    #define simde_math_cosf(v) __builtin_cosf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cosf(v) std::cos(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cosf(v) cosf(v)
   #endif
 #endif
 
@@ -34738,6 +34758,167 @@ simde_mm256_sin_pd (simde__m256d a) {
 }
 #if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
 #  define _mm256_sin_pd(a) simde_mm256_sin_pd(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m128
+simde_mm_cos_ps (simde__m128 a) {
+#if defined(SIMDE_X86_SVML_NATIVE)
+  return _mm_cos_ps(a);
+#else
+  simde__m128_private
+    r_,
+    a_ = simde__m128_to_private(a);
+
+  SIMDE_VECTORIZE
+  for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+    r_.f32[i] =  simde_math_cosf(a_.f32[i]);
+  }
+
+  return simde__m128_from_private(r_);
+#endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+#  define _mm_cos_ps(a) simde_mm_cos_ps(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m128d
+simde_mm_cos_pd (simde__m128d a) {
+#if defined(SIMDE_X86_SVML_NATIVE)
+  return _mm_cos_pd(a);
+#else
+  simde__m128d_private
+    r_,
+    a_ = simde__m128d_to_private(a);
+
+  SIMDE_VECTORIZE
+  for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+    r_.f64[i] =  simde_math_cos(a_.f64[i]);
+  }
+
+  return simde__m128d_from_private(r_);
+#endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+#  define _mm_cos_pd(a) simde_mm_cos_pd(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m256
+simde_mm256_cos_ps (simde__m256 a) {
+#if defined(SIMDE_X86_SVML_NATIVE)
+  return _mm256_cos_ps(a);
+#else
+  simde__m256_private
+    r_,
+    a_ = simde__m256_to_private(a);
+
+  SIMDE_VECTORIZE
+  for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+    r_.f32[i] =  simde_math_cosf(a_.f32[i]);
+  }
+
+  return simde__m256_from_private(r_);
+#endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+#  define _mm256_cos_ps(a) simde_mm256_cos_ps(a)
+#endif
+
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m256d
+simde_mm256_cos_pd (simde__m256d a) {
+#if defined(SIMDE_X86_SVML_NATIVE)
+  return _mm256_cos_pd(a);
+#else
+  simde__m256d_private
+    r_,
+    a_ = simde__m256d_to_private(a);
+
+  SIMDE_VECTORIZE
+  for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+    r_.f64[i] =  simde_math_cos(a_.f64[i]);
+  }
+
+  return simde__m256d_from_private(r_);
+#endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+#  define _mm256_cos_pd(a) simde_mm256_cos_pd(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512
+simde_mm512_cos_ps (simde__m512 a) {
+#if defined(SIMDE_X86_SVML_NATIVE)
+  return _mm512_cos_ps(a);
+#else
+  simde__m512_private
+    r_,
+    a_ = simde__m512_to_private(a);
+
+  SIMDE_VECTORIZE
+  for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+    r_.f32[i] =  simde_math_cosf(a_.f32[i]);
+  }
+
+  return simde__m512_from_private(r_);
+#endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+#  define _mm512_cos_ps(a) simde_mm512_cos_ps(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512d
+simde_mm512_cos_pd (simde__m512d a) {
+#if defined(SIMDE_X86_SVML_NATIVE)
+  return _mm512_cos_pd(a);
+#else
+  simde__m512d_private
+    r_,
+    a_ = simde__m512d_to_private(a);
+
+  SIMDE_VECTORIZE
+  for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+    r_.f64[i] =  simde_math_cos(a_.f64[i]);
+  }
+
+  return simde__m512d_from_private(r_);
+#endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+#  define _mm512_cos_pd(a) simde_mm512_cos_pd(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512
+simde_mm512_mask_cos_ps(simde__m512 src, simde__mmask16 k, simde__m512 a) {
+  #if defined(SIMDE_X86_SVML_NATIVE)
+    return _mm512_mask_cos_ps(src, k, a);
+  #else
+    return simde_mm512_mask_mov_ps(src, k, simde_mm512_cos_ps(a));
+  #endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_mask_cos_ps
+  #define _mm512_mask_cos_ps(src, k, a) simde_mm512_mask_cos_ps(src, k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512d
+simde_mm512_mask_cos_pd(simde__m512d src, simde__mmask8 k, simde__m512d a) {
+  #if defined(SIMDE_X86_SVML_NATIVE)
+    return _mm512_mask_cos_pd(src, k, a);
+  #else
+    return simde_mm512_mask_mov_pd(src, k, simde_mm512_cos_pd(a));
+  #endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_mask_cos_pd
+  #define _mm512_mask_cos_pd(src, k, a) simde_mm512_mask_cos_pd(src, k, a)
 #endif
 
 SIMDE_END_DECLS_

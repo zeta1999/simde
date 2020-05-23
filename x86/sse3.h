@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 11f1383067d7696370c1f9cf9b50b73b6c503cb3 */
+/* 7132e0773278060b558ecb4de8fa99b2048224ff */
 /* :: Begin x86/sse3.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -4000,6 +4000,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_sinf(v) std::sin(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_sinf(v) sinf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_cos)
+  #if SIMDE_MATH_BUILTIN_LIBM(cos)
+    #define simde_math_cos(v) __builtin_cos(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cos(v) std::cos(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cos(v) cos(v)
+  #endif
+#endif
+
+#if !defined(simde_math_cosf)
+  #if SIMDE_MATH_BUILTIN_LIBM(cosf)
+    #define simde_math_cosf(v) __builtin_cosf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cosf(v) std::cos(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cosf(v) cosf(v)
   #endif
 #endif
 
