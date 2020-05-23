@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 7132e0773278060b558ecb4de8fa99b2048224ff */
+/* 5a70ef66cc5ef284e7f4aa012d67dd4bb394180e */
 /* :: Begin x86/avx512dq.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -35247,6 +35247,34 @@ simde_mm512_cvtepi16_epi8 (simde__m512i a) {
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
+simde__m256i
+simde_mm512_mask_cvtepi16_epi8 (simde__m256i src, simde__mmask32 k, simde__m512i a) {
+  #if defined(SIMDE_X86_AVX512BW_NATIVE)
+    return _mm512_mask_cvtepi16_epi8(src, k, a);
+  #else
+    return simde_mm256_mask_mov_epi8(src, k, simde_mm512_cvtepi16_epi8(a));
+  #endif
+}
+#if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_mask_cvtepi16_epi8
+  #define _mm512_mask_cvtepi16_epi8(src, k, a) simde_mm512_mask_cvtepi16_epi8(src, k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m256i
+simde_mm512_maskz_cvtepi16_epi8 (simde__mmask32 k, simde__m512i a) {
+  #if defined(SIMDE_X86_AVX512BW_NATIVE)
+    return _mm512_maskz_cvtepi16_epi8(k, a);
+  #else
+    return simde_mm256_maskz_mov_epi8(k, simde_mm512_cvtepi16_epi8(a));
+  #endif
+}
+#if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_maskz_cvtepi16_epi8
+  #define _mm512_maskz_cvtepi16_epi8(k, a) simde_mm512_maskz_cvtepi16_epi8(k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
 simde__m512i
 simde_mm512_cvtepi8_epi16 (simde__m256i a) {
   #if defined(SIMDE_X86_AVX512BW_NATIVE)
@@ -35297,6 +35325,34 @@ simde_mm512_cvtsepi16_epi8 (simde__m512i a) {
 #if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
   #undef _mm512_cvtsepi16_epi8
   #define _mm512_cvtsepi16_epi8(a) simde_mm512_cvtsepi16_epi8(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m256i
+simde_mm512_mask_cvtsepi16_epi8 (simde__m256i src, simde__mmask32 k, simde__m512i a) {
+  #if defined(SIMDE_X86_AVX512BW_NATIVE)
+    return _mm512_mask_cvtsepi16_epi8(src, k, a);
+  #else
+    return simde_mm256_mask_mov_epi8(src, k, simde_mm512_cvtsepi16_epi8(a));
+  #endif
+}
+#if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_mask_cvtsepi16_epi8
+  #define _mm512_mask_cvtsepi16_epi8(src, k, a) simde_mm512_mask_cvtsepi16_epi8(src, k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m256i
+simde_mm512_maskz_cvtsepi16_epi8 (simde__mmask32 k, simde__m512i a) {
+  #if defined(SIMDE_X86_AVX512BW_NATIVE)
+    return _mm512_maskz_cvtsepi16_epi8(k, a);
+  #else
+    return simde_mm256_maskz_mov_epi8(k, simde_mm512_cvtsepi16_epi8(a));
+  #endif
+}
+#if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_maskz_cvtsepi16_epi8
+  #define _mm512_maskz_cvtsepi16_epi8(k, a) simde_mm512_maskz_cvtsepi16_epi8(k, a)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
