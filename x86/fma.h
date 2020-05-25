@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 66d298f90f5934a881867969ff1210c7cf898770 */
+/* 333a51eb0df7b6d9a1378fd9d1a13ab483a6fc30 */
 /* :: Begin x86/fma.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -8684,7 +8684,7 @@ simde_mm_extract_pi16 (simde__m64 a, const int imm8)
 #    define simde_mm_extract_pi16(a, imm8) HEDLEY_STATIC_CAST(int16_t, _mm_extract_pi16(a, imm8))
 #  endif
 #elif defined(SIMDE_ARM_NEON_A32V7_NATIVE)
-#  define simde_mm_extract_pi16(a, imm8) HEDLEY_STATIC_CAST(int16_t, vget_lane_s16(simde__m64_to_private(a).neon_i16, imm8))
+#  define simde_mm_extract_pi16(a, imm8) vget_lane_s16(simde__m64_to_private(a).neon_i16, imm8)
 #endif
 #define simde_m_pextrw(a, imm8) simde_mm_extract_pi16(a, imm8)
 #if defined(SIMDE_X86_SSE_ENABLE_NATIVE_ALIASES)
@@ -13260,14 +13260,14 @@ int32_t
 simde_mm_extract_epi16 (simde__m128i a, const int imm8)
     SIMDE_REQUIRE_RANGE(imm8, 0, 7)  {
   simde__m128i_private a_ = simde__m128i_to_private(a);
-  return a_.u16[imm8 & 7];
+  return HEDLEY_STATIC_CAST(int32_t,a_.u16[imm8 & 7]);
 }
 #if defined(SIMDE_X86_SSE2_NATIVE) && (!defined(HEDLEY_GCC_VERSION) || HEDLEY_GCC_VERSION_CHECK(4,6,0))
 #  define simde_mm_extract_epi16(a, imm8) _mm_extract_epi16(a, imm8)
 #elif defined(SIMDE_ARM_NEON_A32V7_NATIVE)
-#  define simde_mm_extract_epi16(a, imm8) (vgetq_lane_s16(simde__m128i_to_private(a).neon_i16, (imm8)) & (UINT32_C(0x0000ffff)))
+#  define simde_mm_extract_epi16(a, imm8) HEDLEY_STATIC_CAST(int32_t, vgetq_lane_s16(simde__m128i_to_private(a).neon_i16, (imm8)) & (UINT32_C(0x0000ffff)))
 #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-#  define simde_mm_extract_epi16(a, imm8) (vec_extract(simde__m1289_to_private(a).altivec_i16, imm8));
+#  define simde_mm_extract_epi16(a, imm8) HEDLEY_STATIC_CAST(int32_t, vec_extract(simde__m128i_to_private(a).altivec_i16, imm8))
 #endif
 #if defined(SIMDE_X86_SSE2_ENABLE_NATIVE_ALIASES)
 #  define _mm_extract_epi16(a, imm8) simde_mm_extract_epi16(a, imm8)
@@ -18959,7 +18959,7 @@ simde_mm_extract_epi8 (simde__m128i a, const int imm8)
 #elif defined(SIMDE_ARM_NEON_A32V7_NATIVE)
 #  define simde_mm_extract_epi8(a, imm8) vgetq_lane_s8(simde__m128i_to_private(a).neon_i8, imm8)
 #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-#  define simde_mm_extract_epi8(a, imm8) (vec_extract(simde__m1289_to_private(a).altivec_i8, imm8));
+#  define simde_mm_extract_epi8(a, imm8) HEDLEY_STATIC_CAST(int8_t, vec_extract(simde__m128i_to_private(a).altivec_i8, imm8))
 #endif
 #if defined(SIMDE_X86_SSE4_1_ENABLE_NATIVE_ALIASES)
 #  define _mm_extract_epi8(a, imm8) HEDLEY_STATIC_CAST(int, simde_mm_extract_epi8(a, imm8))
@@ -18981,6 +18981,8 @@ simde_mm_extract_epi32 (simde__m128i a, const int imm8)
 #  define simde_mm_extract_epi32(a, imm8) _mm_extract_epi32(a, imm8)
 #elif defined(SIMDE_ARM_NEON_A32V7_NATIVE)
 #  define simde_mm_extract_epi32(a, imm8) vgetq_lane_s32(simde__m128i_to_private(a).neon_i32, imm8)
+#elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+#  define simde_mm_extract_epi32(a, imm8) HEDLEY_STATIC_CAST(int32_t, vec_extract(simde__m128i_to_private(a).altivec_i32, imm8))
 #endif
 #if defined(SIMDE_X86_SSE4_1_ENABLE_NATIVE_ALIASES)
 #  define _mm_extract_epi32(a, imm8) simde_mm_extract_epi32(a, imm8)
@@ -19002,6 +19004,8 @@ simde_mm_extract_epi64 (simde__m128i a, const int imm8)
 #  define simde_mm_extract_epi64(a, imm8) _mm_extract_epi64(a, imm8)
 #elif defined(SIMDE_ARM_NEON_A32V7_NATIVE)
 #  define simde_mm_extract_epi64(a, imm8) vgetq_lane_s64(simde__m128i_to_private(a).neon_i64, imm8)
+#elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+#  define simde_mm_extract_epi64(a, imm8) HEDLEY_STATIC_CAST(int64_t, vec_extract(simde__m128i_to_private(a).altivec_i64, imm8))
 #endif
 #if defined(SIMDE_X86_SSE4_1_ENABLE_NATIVE_ALIASES)
 #  define _mm_extract_epi64(a, imm8) simde_mm_extract_epi64(a, imm8)
