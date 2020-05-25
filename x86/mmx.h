@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 5a70ef66cc5ef284e7f4aa012d67dd4bb394180e */
+/* 66d298f90f5934a881867969ff1210c7cf898770 */
 /* :: Begin x86/mmx.h :: */
 /* SPDX-License-Identifier: MIT
  *
