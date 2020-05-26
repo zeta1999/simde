@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 1ca6095161fd6d57a37d7de4f6c3911ed7fd6ac0 */
+/* 5a905bb7b7dbd1b1310a3080c197125362d32547 */
 /* :: Begin x86/avx512dq.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -58,6 +58,7 @@
  *   2020      Evan Nemerson <evan@nemerson.com>
  *   2020      Himanshi Mathur <himanshi18037@iiitd.ac.in>
  *   2020      Christopher Moore <moore@free.fr>
+ *   2020      Hidayat Khan <huk2209@gmail.com>
  */
 
 #if !defined(SIMDE_X86_AVX512BW_H)
@@ -215,6 +216,7 @@
  *
  * Copyright:
  *   2017      Evan Nemerson <evan@nemerson.com>
+ *   2020      Hidayat Khan <huk2209@gmail.com>
  */
 
 #if !defined(SIMDE_X86_SSE4_2_H)
@@ -4203,6 +4205,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
   #endif
 #endif
 
+#if !defined(simde_math_cosh)
+  #if SIMDE_MATH_BUILTIN_LIBM(cosh)
+    #define simde_math_cosh(v) __builtin_cosh(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cosh(v) std::cosh(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cosh(v) cosh(v)
+  #endif
+#endif
+
+#if !defined(simde_math_coshf)
+  #if SIMDE_MATH_BUILTIN_LIBM(coshf)
+    #define simde_math_coshf(v) __builtin_coshf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_coshf(v) std::cosh(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_coshf(v) coshf(v)
+  #endif
+#endif
+
 #if !defined(simde_math_exp)
   #if SIMDE_MATH_BUILTIN_LIBM(exp)
     #define simde_math_exp(v) __builtin_exp(v)
@@ -4303,6 +4325,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
   #endif
 #endif
 
+#if !defined(simde_math_sinh)
+  #if SIMDE_MATH_BUILTIN_LIBM(sinh)
+    #define simde_math_sinh(v) __builtin_sinh(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_sinh(v) std::sinh(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_sinh(v) sinh(v)
+  #endif
+#endif
+
+#if !defined(simde_math_sinhf)
+  #if SIMDE_MATH_BUILTIN_LIBM(sinhf)
+    #define simde_math_sinhf(v) __builtin_sinhf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_sinhf(v) std::sinh(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_sinhf(v) sinhf(v)
+  #endif
+#endif
+
 #if !defined(simde_math_sqrt)
   #if SIMDE_MATH_BUILTIN_LIBM(sqrt)
     #define simde_math_sqrt(v) __builtin_sqrt(v)
@@ -4340,6 +4382,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_tanf(v) std::tan(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_tanf(v) tanf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_tanh)
+  #if SIMDE_MATH_BUILTIN_LIBM(tanh)
+    #define simde_math_tanh(v) __builtin_tanh(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_tanh(v) std::tanh(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_tanh(v) tanh(v)
+  #endif
+#endif
+
+#if !defined(simde_math_tanhf)
+  #if SIMDE_MATH_BUILTIN_LIBM(tanhf)
+    #define simde_math_tanhf(v) __builtin_tanhf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_tanhf(v) std::tanh(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_tanhf(v) tanhf(v)
   #endif
 #endif
 
