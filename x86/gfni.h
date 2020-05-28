@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* bc29c5bb051ec846025fce5b3e7e1459520b6129 */
+/* 144462c8f2f0087358ee1e83e6e8acb5aa85b493 */
 /* :: Begin x86/gfni.h :: */
 /* Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -4423,6 +4423,12 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
   #endif
 #endif
 
+#if defined(M_PI)
+  #define SIMDE_MATH_PI M_PI
+#else
+  #define SIMDE_MATH_PI 3.14159265358979323846
+#endif
+
 /*** Additional functions not in libm ***/
 
 #if defined(simde_math_fabs) && defined(simde_math_sqrt) && defined(simde_math_exp)
@@ -4474,6 +4480,30 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
   }
   #define simde_math_cdfnormf simde_math_cdfnormf
 #endif
+
+static HEDLEY_INLINE
+double
+simde_math_rad2deg(double radians) {
+ return radians * (180.0 /SIMDE_MATH_PI);
+}
+
+static HEDLEY_INLINE
+double
+simde_math_deg2rad(double degrees) {
+  return degrees * ( SIMDE_MATH_PI / 180.0 );
+}
+
+static HEDLEY_INLINE
+float
+simde_math_rad2degf(float radians) {
+    return radians * (180.0f /HEDLEY_STATIC_CAST(float, SIMDE_MATH_PI));
+}
+
+static HEDLEY_INLINE
+float
+simde_math_deg2radf(float degrees) {
+    return degrees * ( HEDLEY_STATIC_CAST(float, SIMDE_MATH_PI) / 180.0f );
+}
 
 #endif /* !defined(SIMDE_MATH_H) */
 /* :: End simde-math.h :: */
@@ -11751,7 +11781,7 @@ simde_mm_bslli_si128 (simde__m128i a, const int imm8)
 }
 #if defined(SIMDE_X86_SSE2_NATIVE) && !defined(__PGI)
 #  define simde_mm_bslli_si128(a, imm8) _mm_slli_si128(a, imm8)
-#elif defined(SIMDE_ARM_NEON_A32V7_NATIVE)
+#elif defined(SIMDE_ARM_NEON_A32V7_NATIVE) && !defined(__clang__)
 #  define simde_mm_bslli_si128(a, imm8) \
   simde__m128i_from_neon_i8(((imm8) <= 0) ? simde__m128i_to_neon_i8(a) : (((imm8) > 15) ? (vdupq_n_s8(0)) : (vextq_s8(vdupq_n_s8(0), simde__m128i_to_neon_i8(a), 16 - (imm8)))))
 #elif defined(SIMDE_SHUFFLE_VECTOR_)
@@ -11809,7 +11839,7 @@ simde_mm_bsrli_si128 (simde__m128i a, const int imm8)
 }
 #if defined(SIMDE_X86_SSE2_NATIVE) && !defined(__PGI)
 #  define simde_mm_bsrli_si128(a, imm8) _mm_srli_si128(a, imm8)
-#elif defined(SIMDE_ARM_NEON_A32V7_NATIVE)
+#elif defined(SIMDE_ARM_NEON_A32V7_NATIVE) && !defined(__clang__)
 #  define simde_mm_bsrli_si128(a, imm8) \
   simde__m128i_from_neon_i8(((imm8 < 0) || (imm8 > 15)) ? vdupq_n_s8(0) : (vextq_s8(simde__m128i_to_private(a).neon_i8, vdupq_n_s8(0), ((imm8 & 15) != 0) ? imm8 : (imm8 & 15))))
 #elif defined(SIMDE_SHUFFLE_VECTOR_)
@@ -15799,20 +15829,24 @@ simde_mm_srli_epi64 (simde__m128i a, const int imm8)
   if (HEDLEY_UNLIKELY((imm8 & 63) != imm8))
     return simde_mm_setzero_si128();
 
-#if defined(SIMDE_VECTOR_SUBSCRIPT_SCALAR) && !defined(SIMDE_BUG_GCC_94488)
-  r_.u64 = a_.u64 >> imm8;
-#else
-  SIMDE_VECTORIZE
-  for (size_t i = 0 ; i < (sizeof(r_.i64) / sizeof(r_.i64[0])) ; i++) {
-    r_.u64[i] = a_.u64[i] >> imm8;
-  }
-#endif
+  #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
+    r_.neon_u64 = vshlq_u64(a_.neon_u64, vdupq_n_s64(-imm8));
+  #else
+    #if defined(SIMDE_VECTOR_SUBSCRIPT_SCALAR) && !defined(SIMDE_BUG_GCC_94488)
+      r_.u64 = a_.u64 >> imm8;
+    #else
+      SIMDE_VECTORIZE
+      for (size_t i = 0 ; i < (sizeof(r_.i64) / sizeof(r_.i64[0])) ; i++) {
+        r_.u64[i] = a_.u64[i] >> imm8;
+      }
+    #endif
+  #endif
 
   return simde__m128i_from_private(r_);
 }
 #if defined(SIMDE_X86_SSE2_NATIVE)
 #  define simde_mm_srli_epi64(a, imm8) _mm_srli_epi64(a, imm8)
-#elif defined(SIMDE_ARM_NEON_A32V7_NATIVE)
+#elif defined(SIMDE_ARM_NEON_A32V7_NATIVE) && !defined(__clang__)
 #  define simde_mm_srli_epi64(a, imm8) \
     ((imm8 == 0) ? (a) : (simde__m128i_from_neon_u64(vshrq_n_u64(simde__m128i_to_neon_u64(a), imm8))))
 #endif
