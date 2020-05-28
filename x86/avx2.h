@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* d706ad83b97d99c10d63aed70caf792de809f9c0 */
+/* 38985295fc18476675f46c721a08a694d42752c7 */
 /* :: Begin x86/avx2.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -20065,7 +20065,7 @@ SIMDE_BEGIN_DECLS_
   #define SIMDE_SIDD_UNIT_MASK 0x40
 #endif
 
-#if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES)
+#if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES) && !defined(_SIDD_UBYTE_OPS)
   #define _SIDD_UBYTE_OPS SIMDE_SIDD_UBYTE_OPS
   #define _SIDD_UWORD_OPS SIMDE_SIDD_UWORD_OPS
   #define _SIDD_SBYTE_OPS SIMDE_SIDD_SBYTE_OPS
@@ -20100,6 +20100,7 @@ int simde_mm_cmpestrs (simde__m128i a, int la, simde__m128i b, int lb, const int
   #define simde_mm_cmpestrs(a, la, b, lb, imm8) _mm_cmpestrs(a, la, b, lb, imm8)
 #endif
 #if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES)
+  #undef _mm_cmpestrs
   #define _mm_cmpestrs(a, la, b, lb, imm8) simde_mm_cmpestrs(a, la, b, lb, imm8)
 #endif
 
@@ -20119,6 +20120,7 @@ int simde_mm_cmpestrz (simde__m128i a, int la, simde__m128i b, int lb, const int
   #define simde_mm_cmpestrz(a, la, b, lb, imm8) _mm_cmpestrz(a, la, b, lb, imm8)
 #endif
 #if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES)
+  #undef _mm_cmpestrz
   #define _mm_cmpestrz(a, la, b, lb, imm8) simde_mm_cmpestrz(a, la, b, lb, imm8)
 #endif
 
@@ -20150,7 +20152,8 @@ simde_mm_cmpgt_epi64 (simde__m128i a, simde__m128i b) {
 #endif
 }
 #if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES)
-#  define _mm_cmpgt_epi64(a, b) simde_mm_cmpgt_epi64(a, b)
+  #undef _mm_cmpgt_epi64
+  #define _mm_cmpgt_epi64(a, b) simde_mm_cmpgt_epi64(a, b)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
@@ -20190,6 +20193,7 @@ simde_mm_cmpistrs_16_(simde__m128i a) {
        : simde_mm_cmpistrs_8_((a)))
 #endif
 #if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES)
+  #undef _mm_cmpistrs
   #define _mm_cmpistrs(a, b, imm8) simde_mm_cmpistrs(a, b, imm8)
 #endif
 
@@ -20230,6 +20234,7 @@ simde_mm_cmpistrz_16_(simde__m128i b) {
        : simde_mm_cmpistrz_8_((b)))
 #endif
 #if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES)
+  #undef _mm_cmpistrz
   #define _mm_cmpistrz(a, b, imm8) simde_mm_cmpistrz(a, b, imm8)
 #endif
 
