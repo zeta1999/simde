@@ -5,38 +5,47 @@ jobs:
 
 - job: sse2
   steps:
-  - script: sudo apt-get update && sudo apt-get install -y ninja-build
+  - script: sudo apt-get update && sudo apt-get install -y ninja-build meson gcovr
     displayName: Dependencies
-  - script: cmake test -G Ninja -DCMAKE_BUILD_TYPE=Coverage -DALWAYS_BUILD_NATIVE_TESTS=ON -DCMAKE_C_FLAGS='-msse2' -DCMAKE_CXX_FLAGS='-march=native'
+  - script: mkdir build && meson -Db_coverage=true -Db_sanitize=address,undefined CFLAGS='-msse2' CXXFLAGS='-msse2' build
     displayName: Configure
-  - script: ninja -v
+  - script: ninja -C build -v
     displayName: Build
-  - script: ./run-tests
+  - script: ./build/test/run-tests
     displayName: Tests
+  - script: ninja -C build -v coverage-xml
+    displayName: Collect Coverage
+  - script: if [ -e "build/meson-logs/coverage.xml" ]; then bash <(curl -s https://codecov.io/bash) -y .codecov.yml -f "build/meson-logs/coverage.xml"; fi
+    displayName: Upload Coverage
 
 - job: sse4_1
   steps:
-  - script: sudo apt-get update && sudo apt-get install -y ninja-build
+  - script: sudo apt-get update && sudo apt-get install -y ninja-build meson gcovr
     displayName: Dependencies
-  - script: cmake test -G Ninja -DCMAKE_BUILD_TYPE=Coverage -DALWAYS_BUILD_NATIVE_TESTS=ON -DCMAKE_C_FLAGS='-msse4.1' -DCMAKE_CXX_FLAGS='-march=native'
+  - script: mkdir build && meson -Db_coverage=true -Db_sanitize=address,undefined CFLAGS='-msse4.1' CXXFLAGS='-msse4.1' build
     displayName: Configure
-  - script: ninja -v
+  - script: ninja -C build -v
     displayName: Build
-  - script: ./run-tests
+  - script: ./build/test/run-tests
     displayName: Tests
+  - script: ninja -c build -v coverage-xml
+    displayname: collect coverage
+  - script: if [ -e "build/meson-logs/coverage.xml" ]; then bash <(curl -s https://codecov.io/bash) -y .codecov.yml -f "build/meson-logs/coverage.xml"; fi
+    displayname: upload coverage
 
 - job: mipsel
+  vmImage: 'ubuntu-bionic'
   steps:
-  - script: sudo apt-get update && sudo apt-get -y install qemu-user
+  - script: sudo apt-get update && sudo apt-get -y install gcc-8-mipsel-linux-gnu g++-8-mipsel-linux-gnu qemu-user-static binfmt-support python3-pip python3-setuptools ninja-build
     displayName: APT Dependencies
-  - script: |
-      docker pull dockcross/linux-mipsel
-      docker run --rm dockcross/linux-mipsel > ./dockcross-linux-mipsel
-      chmod u+x ./dockcross-linux-mipsel
-    displayName: Prepare Dockcross
-  - script: ./dockcross-linux-mipsel cmake test -DALWAYS_BUILD_NATIVE_TESTS=ON -DCMAKE_BUILD_TYPE=Coverage
+  - script: pip3 install meson gcovr
+    displayName: Install meson
+  - script: QEMU_LD_PREFIX=/usr/mipsel-linux-gnu/ CC=/usr/bin/mipsel-linux-gnu-gcc-8 CXX=/usr/bin/mipsel-linux-gnu-g++-8 meson -Db_coverage=true -Db_sanitize=address,undefined build
     displayName: Configure
-  - script: ./dockcross-linux-mipsel make VERBOSE=1
+  - script: QEMU_LD_PREFIX=/usr/mipsel-linux-gnu/ ninja -C build -v
     displayName: Build
-  - script: ./dockcross-linux-mipsel ./run-tests
+  - script: QEMU_LD_PREFIX=/usr/mipsel-linux-gnu/ /usr/bin/qemu-mipsel-static ./build/test/run-tests
     displayName: Tests
+  - script: if [ -e "build/meson-logs/coverage.xml" ]; then bash <(curl -s https://codecov.io/bash) -y .codecov.yml -f "build/meson-logs/coverage.xml"; fi
+    displayName: Upload Coverage
+
