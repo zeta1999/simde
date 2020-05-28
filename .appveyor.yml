@@ -1,31 +1,46 @@
 environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      GENERATOR: Visual Studio 15 2017 Win64
+      compiler: msvc2017
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-      GENERATOR: Visual Studio 14 2015 Win64
+      compiler: msvc2015
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2013
-      GENERATOR: Visual Studio 12 2013 Win64
+      compiler: msvc2013
 
 branches:
   except:
     - /^(wip\/)?(travis|osx|ipp)(\-.+)?$/
 
+platform:
+  - x64
+
+install:
+  # Set paths to dependencies (based on architecture)
+  - cmd: if %arch%==x86 (set PYTHON_ROOT=C:\python37) else (set PYTHON_ROOT=C:\python37-x64)
+  # Print out dependency paths
+  - cmd: echo Using Python at %PYTHON_ROOT%
+  # Add necessary paths to PATH variable
+  - cmd: set PATH=%cd%;%PYTHON_ROOT%;%PYTHON_ROOT%\Scripts;%PATH%
+  # Install meson and ninja
+  - cmd: pip install ninja meson
+  # Set up the build environment
+  - cmd: if %compiler%==msvc2015 ( call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" %arch% )
+  - cmd: if %compiler%==msvc2017 ( call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" %arch% )
+
 before_build:
   - ps: |
       git submodule -q update --init --recursive
-      cd test
-      mkdir build
-      cd build
-      cmake --version
-      cmake -G "$env:GENERATOR" -DALWAYS_BUILD_NATIVE_TESTS=ON -DCMAKE_C_FLAGS="/W4 /WX /wd4054" -DCMAKE_CXX_FLAGS="/W4 /WX /wd4054" ..
-      type CMakeFiles/CMakeError.log
 
 build_script:
-  - ps: |
-      cmake --build . --config Debug
+  - cmd: echo Building on %arch% with %compiler%
+  - cmd: meson -Db_coverage=true -Db_sanitize=address,undefined --backend=ninja builddir
+  - cmd: ninja -C builddir -v
+  - cmd: ninja -C builddir test
+  - cmd: ninja -C builddir -v coverage-xml
 
-test_script:
+after_test:
   - ps: |
-      if("$env:RUN_TESTS" -ne "no") { ctest --output-on-failure --interactive-debug-mode 0 -C Debug -V }
- 
+      Invoke-WebRequest -Uri 'https://codecov.io/bash' -OutFile codecov.sh
+      $env:APPVEYOR="true"
+      $env:CI="true"
+      bash codecov.sh -f "builddir/meson-logs/coverage.xml"
