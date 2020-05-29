@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* b295f5b820ef66e66c82627c64364389a03b3894 */
+/* cafec4b952fa5a31a51a10326f97c2e7c9067771 */
 /* :: Begin x86/sse4.1.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -3943,6 +3943,66 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
   #endif
 #endif
 
+#if !defined(simde_math_acos)
+  #if SIMDE_MATH_BUILTIN_LIBM(acos)
+    #define simde_math_acos(v) __builtin_acos(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_acos(v) std::acos(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_acos(v) acos(v)
+  #endif
+#endif
+
+#if !defined(simde_math_acosf)
+  #if SIMDE_MATH_BUILTIN_LIBM(acosf)
+    #define simde_math_acosf(v) __builtin_acosf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_acosf(v) std::acos(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_acosf(v) acosf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_asin)
+  #if SIMDE_MATH_BUILTIN_LIBM(asin)
+    #define simde_math_asin(v) __builtin_asin(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_asin(v) std::asin(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_asin(v) asin(v)
+  #endif
+#endif
+
+#if !defined(simde_math_asinf)
+  #if SIMDE_MATH_BUILTIN_LIBM(asinf)
+    #define simde_math_asinf(v) __builtin_asinf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_asinf(v) std::asin(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_asinf(v) asinf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_atan)
+  #if SIMDE_MATH_BUILTIN_LIBM(atan)
+    #define simde_math_atan(v) __builtin_atan(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_atan(v) std::atan(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_atan(v) atan(v)
+  #endif
+#endif
+
+#if !defined(simde_math_atanf)
+  #if SIMDE_MATH_BUILTIN_LIBM(atanf)
+    #define simde_math_atanf(v) __builtin_atanf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_atanf(v) std::atan(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_atanf(v) atanf(v)
+  #endif
+#endif
+
 #if !defined(simde_math_ceil)
   #if SIMDE_MATH_BUILTIN_LIBM(ceil)
     #define simde_math_ceil(v) __builtin_ceil(v)
@@ -4264,25 +4324,25 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
 static HEDLEY_INLINE
 double
 simde_math_rad2deg(double radians) {
- return radians * (180.0 /SIMDE_MATH_PI);
+ return radians * (180.0 / SIMDE_MATH_PI);
 }
 
 static HEDLEY_INLINE
 double
 simde_math_deg2rad(double degrees) {
-  return degrees * ( SIMDE_MATH_PI / 180.0 );
+  return degrees * (SIMDE_MATH_PI / 180.0);
 }
 
 static HEDLEY_INLINE
 float
 simde_math_rad2degf(float radians) {
-    return radians * (180.0f /HEDLEY_STATIC_CAST(float, SIMDE_MATH_PI));
+    return radians * (180.0f / HEDLEY_STATIC_CAST(float, SIMDE_MATH_PI));
 }
 
 static HEDLEY_INLINE
 float
 simde_math_deg2radf(float degrees) {
-    return degrees * ( HEDLEY_STATIC_CAST(float, SIMDE_MATH_PI) / 180.0f );
+    return degrees * (HEDLEY_STATIC_CAST(float, SIMDE_MATH_PI) / 180.0f);
 }
 
 #endif /* !defined(SIMDE_MATH_H) */
@@ -4725,6 +4785,7 @@ simde_math_deg2radf(float degrees) {
 #    if defined(SIMDE_ARCH_POWER)
 #      define SIMDE_BUG_GCC_95227
 #    endif
+#    define SIMDE_BUG_GCC_95399
 #  elif defined(__clang__)
 #    if defined(SIMDE_ARCH_AARCH64)
 #      define SIMDE_BUG_CLANG_45541
@@ -8155,10 +8216,10 @@ simde_mm_cvt_ss2si (simde__m128 a) {
 #else
   simde__m128_private a_ = simde__m128_to_private(a);
 
-  #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
-    return SIMDE_CONVERT_FTOI(int32_t, nearbyintf(vgetq_lane_f32(a_.neon_f32, 0)));
+  #if defined(SIMDE_ARM_NEON_A32V8_NATIVE) && !defined(SIMDE_BUG_GCC_95399)
+    return vgetq_lane_s32(vcvtnq_s32_f32(a_.neon_f32), 0);
   #elif defined(simde_math_nearbyintf)
-    return SIMDE_CONVERT_FTOI(int32_t, nearbyintf(a_.f32[0]));
+    return SIMDE_CONVERT_FTOI(int32_t, simde_math_nearbyintf(a_.f32[0]));
   #else
     HEDLEY_UNREACHABLE();
   #endif
@@ -8757,11 +8818,11 @@ SIMDE_MM_GET_ROUNDING_MODE(void) {
 SIMDE_FUNCTION_ATTRIBUTES
 void
 SIMDE_MM_SET_ROUNDING_MODE(unsigned int a) {
-#if defined(SIMDE_X86_SSE_NATIVE)
-  _MM_SET_ROUNDING_MODE(a);
-#else
-  fesetround(HEDLEY_STATIC_CAST(int, a));
-#endif
+  #if defined(SIMDE_X86_SSE_NATIVE)
+    _MM_SET_ROUNDING_MODE(a);
+  #elif defined(SIMDE_HAVE_FENV_H)
+    fesetround(HEDLEY_STATIC_CAST(int, a));
+  #endif
 }
 #if defined(SIMDE_X86_SSE_ENABLE_NATIVE_ALIASES)
 #  define _MM_SET_ROUNDING_MODE(a) SIMDE_MM_SET_ROUNDING_MODE(a)
