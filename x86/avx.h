@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 4b43d306ccd7ae5fe206c893c440ba20ad89799e */
+/* ed9db5102def5abb5055222a144e3ca5fca1878c */
 /* :: Begin x86/avx.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -3862,6 +3862,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_acosf(v) std::acos(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_acosf(v) acosf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_acosh)
+  #if SIMDE_MATH_BUILTIN_LIBM(acosh)
+    #define simde_math_acosh(v) __builtin_acosh(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_acosh(v) std::acosh(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_acosh(v) acosh(v)
+  #endif
+#endif
+
+#if !defined(simde_math_acoshf)
+  #if SIMDE_MATH_BUILTIN_LIBM(acoshf)
+    #define simde_math_acoshf(v) __builtin_acoshf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_acoshf(v) std::acosh(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_acoshf(v) acoshf(v)
   #endif
 #endif
 
