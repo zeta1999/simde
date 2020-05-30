@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* cafec4b952fa5a31a51a10326f97c2e7c9067771 */
+/* 263118c3333515531134126d5395f1ee70ba8bb8 */
 /* :: Begin x86/avx512cd.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -154,165 +154,6 @@
  * Copyright:
  *   2018-2020 Evan Nemerson <evan@nemerson.com>
  */
-
-#if !defined(SIMDE_AVX_H)
-#define SIMDE_AVX_H
-
-/* :: Begin x86/sse4.2.h :: */
-/* SPDX-License-Identifier: MIT
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without
- * restriction, including without limitation the rights to use, copy,
- * modify, merge, publish, distribute, sublicense, and/or sell copies
- * of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
- * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- * Copyright:
- *   2017      Evan Nemerson <evan@nemerson.com>
- *   2020      Hidayat Khan <huk2209@gmail.com>
- */
-
-#if !defined(SIMDE_X86_SSE4_2_H)
-#define SIMDE_X86_SSE4_2_H
-
-/* :: Begin x86/sse4.1.h :: */
-/* SPDX-License-Identifier: MIT
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without
- * restriction, including without limitation the rights to use, copy,
- * modify, merge, publish, distribute, sublicense, and/or sell copies
- * of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
- * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- * Copyright:
- *   2017-2020 Evan Nemerson <evan@nemerson.com>
- */
-
-#if !defined(SIMDE_X86_SSE4_1_H)
-#define SIMDE_X86_SSE4_1_H
-
-/* :: Begin x86/ssse3.h :: */
-/* SPDX-License-Identifier: MIT
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without
- * restriction, including without limitation the rights to use, copy,
- * modify, merge, publish, distribute, sublicense, and/or sell copies
- * of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
- * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- * Copyright:
- *   2017-2020 Evan Nemerson <evan@nemerson.com>
- */
-
-#if !defined(SIMDE_X86_SSSE3_H)
-#define SIMDE_X86_SSSE3_H
-
-/* :: Begin x86/sse3.h :: */
-/* SPDX-License-Identifier: MIT
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without
- * restriction, including without limitation the rights to use, copy,
- * modify, merge, publish, distribute, sublicense, and/or sell copies
- * of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
- * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- * Copyright:
- *   2017-2020 Evan Nemerson <evan@nemerson.com>
- */
-
-#if !defined(SIMDE_X86_SSE3_H)
-#define SIMDE_X86_SSE3_H
-
-/* :: Begin x86/sse2.h :: */
-/* SPDX-License-Identifier: MIT
- *
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated documentation
- * files (the "Software"), to deal in the Software without
- * restriction, including without limitation the rights to use, copy,
- * modify, merge, publish, distribute, sublicense, and/or sell copies
- * of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
- * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- * Copyright:
- *   2017-2020 Evan Nemerson <evan@nemerson.com>
- *   2015-2017 John W. Ratcliff <jratcliffscarab@gmail.com>
- *   2015      Brandon Rowlett <browlett@nvidia.com>
- *   2015      Ken Fast <kfast@gdeb.com>
- *   2017      Hasindu Gamaarachchi <hasindu@unsw.edu.au>
- *   2018      Jeff Daily <jeff.daily@amd.com>
- */
-
-#if !defined(SIMDE_X86_SSE2_H)
-#define SIMDE_X86_SSE2_H
 
 /* :: Begin x86/sse.h :: */
 /* SPDX-License-Identifier: MIT
@@ -4332,6 +4173,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
   #endif
 #endif
 
+#if !defined(simde_math_round)
+  #if SIMDE_MATH_BUILTIN_LIBM(round)
+    #define simde_math_round(v) __builtin_round(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_round(v) std::round(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_round(v) round(v)
+  #endif
+#endif
+
+#if !defined(simde_math_roundf)
+  #if SIMDE_MATH_BUILTIN_LIBM(roundf)
+    #define simde_math_roundf(v) __builtin_roundf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_roundf(v) std::round(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_roundf(v) roundf(v)
+  #endif
+#endif
+
 #if !defined(simde_math_sin)
   #if SIMDE_MATH_BUILTIN_LIBM(sin)
     #define simde_math_sin(v) __builtin_sin(v)
@@ -7650,7 +7511,7 @@ simde_mm_cmpeq_ps (simde__m128 a, simde__m128 b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_f32x4_eq(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_f32 = (SIMDE_POWER_ALTIVEC_VECTOR(float)) vec_cmpeq(a_.altivec_f32, b_.altivec_f32);
+    r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_cmpeq(a_.altivec_f32, b_.altivec_f32));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i32 = HEDLEY_STATIC_CAST(__typeof__(r_.i32), a_.f32 == b_.f32);
   #else
@@ -7709,7 +7570,7 @@ simde_mm_cmpge_ps (simde__m128 a, simde__m128 b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_f32x4_ge(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_f32 = (SIMDE_POWER_ALTIVEC_VECTOR(float)) vec_cmpge(a_.altivec_f32, b_.altivec_f32);
+    r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_cmpge(a_.altivec_f32, b_.altivec_f32));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i32 = HEDLEY_STATIC_CAST(__typeof__(r_.i32), (a_.f32 >= b_.f32));
   #else
@@ -7768,7 +7629,7 @@ simde_mm_cmpgt_ps (simde__m128 a, simde__m128 b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_f32x4_gt(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_f32 = (SIMDE_POWER_ALTIVEC_VECTOR(float)) vec_cmpgt(a_.altivec_f32, b_.altivec_f32);
+    r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_cmpgt(a_.altivec_f32, b_.altivec_f32));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i32 = HEDLEY_STATIC_CAST(__typeof__(r_.i32), (a_.f32 > b_.f32));
   #else
@@ -7827,7 +7688,7 @@ simde_mm_cmple_ps (simde__m128 a, simde__m128 b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_f32x4_le(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_f32 = (SIMDE_POWER_ALTIVEC_VECTOR(float)) vec_cmple(a_.altivec_f32, b_.altivec_f32);
+    r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_cmple(a_.altivec_f32, b_.altivec_f32));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i32 = HEDLEY_STATIC_CAST(__typeof__(r_.i32), (a_.f32 <= b_.f32));
   #else
@@ -7886,7 +7747,7 @@ simde_mm_cmplt_ps (simde__m128 a, simde__m128 b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_f32x4_lt(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_f32 = (SIMDE_POWER_ALTIVEC_VECTOR(float)) vec_cmplt(a_.altivec_f32, b_.altivec_f32);
+    r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_cmplt(a_.altivec_f32, b_.altivec_f32));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i32 = HEDLEY_STATIC_CAST(__typeof__(r_.i32), (a_.f32 < b_.f32));
   #else
@@ -7949,7 +7810,7 @@ simde_mm_cmpneq_ps (simde__m128 a, simde__m128 b) {
        though the documentation (table 89 on page 432 of the IBM XL C/C++ for
        Linux Compiler Reference, Version 16.1.1) shows that it should be
        present.  Both GCC and clang support it. */
-    r_.altivec_f32 = (SIMDE_POWER_ALTIVEC_VECTOR(float)) vec_cmpne(a_.altivec_f32, b_.altivec_f32);
+    r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_cmpne(a_.altivec_f32, b_.altivec_f32));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i32 = HEDLEY_STATIC_CAST(__typeof__(r_.i32), (a_.f32 != b_.f32));
   #else
@@ -9974,7 +9835,7 @@ simde_mm_setzero_ps (void) {
 #elif defined(SIMDE_ARM_NEON_A32V7_NATIVE)
   return vdupq_n_f32(SIMDE_FLOAT32_C(0.0));
 #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-  return vec_splats((float)0);
+  return vec_splats(SIMDE_FLOAT32_C(0.0));
 #else
   simde__m128 r;
   simde_memset(&r, 0, sizeof(r));
@@ -10921,6 +10782,165 @@ HEDLEY_DIAGNOSTIC_POP
 
 #endif /* !defined(SIMDE_X86_SSE_H) */
 /* :: End x86/sse.h :: */
+#if !defined(SIMDE_AVX_H)
+#define SIMDE_AVX_H
+
+/* :: Begin x86/sse4.2.h :: */
+/* SPDX-License-Identifier: MIT
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Copyright:
+ *   2017      Evan Nemerson <evan@nemerson.com>
+ *   2020      Hidayat Khan <huk2209@gmail.com>
+ */
+
+#if !defined(SIMDE_X86_SSE4_2_H)
+#define SIMDE_X86_SSE4_2_H
+
+/* :: Begin x86/sse4.1.h :: */
+/* SPDX-License-Identifier: MIT
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Copyright:
+ *   2017-2020 Evan Nemerson <evan@nemerson.com>
+ */
+
+#if !defined(SIMDE_X86_SSE4_1_H)
+#define SIMDE_X86_SSE4_1_H
+
+/* :: Begin x86/ssse3.h :: */
+/* SPDX-License-Identifier: MIT
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Copyright:
+ *   2017-2020 Evan Nemerson <evan@nemerson.com>
+ */
+
+#if !defined(SIMDE_X86_SSSE3_H)
+#define SIMDE_X86_SSSE3_H
+
+/* :: Begin x86/sse3.h :: */
+/* SPDX-License-Identifier: MIT
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Copyright:
+ *   2017-2020 Evan Nemerson <evan@nemerson.com>
+ */
+
+#if !defined(SIMDE_X86_SSE3_H)
+#define SIMDE_X86_SSE3_H
+
+/* :: Begin x86/sse2.h :: */
+/* SPDX-License-Identifier: MIT
+ *
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Copyright:
+ *   2017-2020 Evan Nemerson <evan@nemerson.com>
+ *   2015-2017 John W. Ratcliff <jratcliffscarab@gmail.com>
+ *   2015      Brandon Rowlett <browlett@nvidia.com>
+ *   2015      Ken Fast <kfast@gdeb.com>
+ *   2017      Hasindu Gamaarachchi <hasindu@unsw.edu.au>
+ *   2018      Jeff Daily <jeff.daily@amd.com>
+ */
+
+#if !defined(SIMDE_X86_SSE2_H)
+#define SIMDE_X86_SSE2_H
+
 
 #if !defined(SIMDE_X86_SSE2_NATIVE) && defined(SIMDE_ENABLE_NATIVE_ALIASES)
 #  define SIMDE_X86_SSE2_ENABLE_NATIVE_ALIASES
@@ -12150,7 +12170,7 @@ simde_mm_cmpeq_epi8 (simde__m128i a, simde__m128i b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_i8x16_eq(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_i8 = (SIMDE_POWER_ALTIVEC_VECTOR(signed char)) vec_cmpeq(a_.altivec_i8, b_.altivec_i8);
+    r_.altivec_i8 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(signed char), vec_cmpeq(a_.altivec_i8, b_.altivec_i8));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i8 = HEDLEY_STATIC_CAST(__typeof__(r_.i8), (a_.i8 == b_.i8));
   #else
@@ -12183,7 +12203,7 @@ simde_mm_cmpeq_epi16 (simde__m128i a, simde__m128i b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_i16x8_eq(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_i16 = (SIMDE_POWER_ALTIVEC_VECTOR(signed short)) vec_cmpeq(a_.altivec_i16, b_.altivec_i16);
+    r_.altivec_i16 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(signed short), vec_cmpeq(a_.altivec_i16, b_.altivec_i16));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i16 = (a_.i16 == b_.i16);
   #else
@@ -12216,7 +12236,7 @@ simde_mm_cmpeq_epi32 (simde__m128i a, simde__m128i b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_i32x4_eq(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_i32 = (SIMDE_POWER_ALTIVEC_VECTOR(signed int)) vec_cmpeq(a_.altivec_i32, b_.altivec_i32);
+    r_.altivec_i32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(signed int), vec_cmpeq(a_.altivec_i32, b_.altivec_i32));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i32 = HEDLEY_STATIC_CAST(__typeof__(r_.i32), a_.i32 == b_.i32);
   #else
@@ -12249,7 +12269,7 @@ simde_mm_cmpeq_pd (simde__m128d a, simde__m128d b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_f64x2_eq(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_f64 = (SIMDE_POWER_ALTIVEC_VECTOR(double)) vec_cmpeq(a_.altivec_f64, b_.altivec_f64);
+    r_.altivec_f64 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(double), vec_cmpeq(a_.altivec_f64, b_.altivec_f64));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i64 = HEDLEY_STATIC_CAST(__typeof__(r_.i64), (a_.f64 == b_.f64));
   #else
@@ -12511,7 +12531,7 @@ simde_mm_cmple_pd (simde__m128d a, simde__m128d b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_f64x2_le(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_f64 = (SIMDE_POWER_ALTIVEC_VECTOR(double)) vec_cmple(a_.altivec_f64, b_.altivec_f64);
+    r_.altivec_f64 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(double), vec_cmple(a_.altivec_f64, b_.altivec_f64));
   #else
     SIMDE_VECTORIZE
     for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
@@ -12565,7 +12585,7 @@ simde_mm_cmpgt_epi8 (simde__m128i a, simde__m128i b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_i8x16_gt(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_i8 = (SIMDE_POWER_ALTIVEC_VECTOR(signed char)) vec_cmpgt(a_.altivec_i8, b_.altivec_i8);
+    r_.altivec_i8 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(signed char), vec_cmpgt(a_.altivec_i8, b_.altivec_i8));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i8 = HEDLEY_STATIC_CAST(__typeof__(r_.i8), (a_.i8 > b_.i8));
   #else
@@ -12631,7 +12651,7 @@ simde_mm_cmpgt_epi32 (simde__m128i a, simde__m128i b) {
   #elif defined(SIMDE_WASM_SIMD128_NATIVE)
     r_.wasm_v128 = wasm_i32x4_gt(a_.wasm_v128, b_.wasm_v128);
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_i32 = (SIMDE_POWER_ALTIVEC_VECTOR(signed int)) vec_cmpgt(a_.altivec_i32, b_.altivec_i32);
+    r_.altivec_i32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(signed int), vec_cmpgt(a_.altivec_i32, b_.altivec_i32));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i32 = HEDLEY_STATIC_CAST(__typeof__(r_.i32), (a_.i32 > b_.i32));
   #else
@@ -12994,7 +13014,12 @@ simde_mm_cvtepi32_ps (simde__m128i a) {
 #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
   r_.neon_f32 = vcvtq_f32_s32(a_.neon_i32);
 #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+  HEDLEY_DIAGNOSTIC_PUSH
+  #if HEDLEY_HAS_WARNING("-Wc11-extensions")
+    #pragma clang diagnostic ignored "-Wc11-extensions"
+  #endif
   r_.altivec_f32 = vec_ctf(a_.altivec_i32, 0);
+  HEDLEY_DIAGNOSTIC_POP
 #elif defined(SIMDE_CONVERT_VECTOR_)
   SIMDE_CONVERT_VECTOR_(r_.f32, a_.i32);
 #else
@@ -13140,10 +13165,10 @@ simde_mm_cvtps_epi32 (simde__m128 a) {
     uint32x4_t is_delta_half = vceqq_f32(delta, half); /* delta == +/- 0.5 */
     r_.neon_i32 = vbslq_s32(is_delta_half, r_even, r_normal);
   #endif
-#elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-  r_.altivec_i32 = vec_cts(a_.altivec_f32, 0);
 #elif defined(SIMDE_CONVERT_VECTOR_)
   SIMDE_CONVERT_VECTOR_(r_.i32, a_.f32);
+#elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+  r_.altivec_i32 = vec_cts(a_.altivec_f32, 0);
 #else
   SIMDE_VECTORIZE
   for (size_t i = 0 ; i < (sizeof(r_.i32) / sizeof(r_.i32[0])) ; i++) {
@@ -13279,7 +13304,7 @@ simde_mm_cvtsi128_si64 (simde__m128i a) {
 #else
   simde__m128i_private a_ = simde__m128i_to_private(a);
 #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE) && !defined(HEDLEY_IBM_VERSION)
-  return vec_extract(a_.i64, 0);
+  return vec_extract(HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(signed long long), a_.i64), 0);
 #endif
   return a_.i64[0];
 #endif
@@ -13580,7 +13605,7 @@ simde_mm_extract_epi16 (simde__m128i a, const int imm8)
       (void) a_;
       (void) imm8;
     #endif
-    r = vec_extract(a_.altivec_i16, imm8);
+    r = HEDLEY_STATIC_CAST(uint16_t, vec_extract(a_.altivec_i16, imm8));
   #else
     r = a_.u16[imm8 & 7];
   #endif
@@ -13625,8 +13650,6 @@ simde_mm_load_pd (simde_float64 const mem_addr[HEDLEY_ARRAY_PARAM(2)]) {
 
     #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
       r_.neon_u32 = vld1q_u32(HEDLEY_REINTERPRET_CAST(uint32_t const*, mem_addr));
-    #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE) && !defined(HEDLEY_IBM_VERSION)
-      r_.altivec_f64 = vec_ld(0, HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(double) const*, mem_addr));
     #else
       r_ = *SIMDE_ALIGN_CAST(simde__m128d_private const*, mem_addr);
     #endif
@@ -18696,59 +18719,83 @@ simde_mm_round_pd (simde__m128d a, int rounding)
     r_,
     a_ = simde__m128d_to_private(a);
 
+  /* For architectures which lack a current direction SIMD instruction. */
+  #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+    if ((rounding & 7) == SIMDE_MM_FROUND_CUR_DIRECTION)
+      rounding = HEDLEY_STATIC_CAST(int, SIMDE_MM_GET_ROUNDING_MODE()) << 13;
+  #endif
+
   switch (rounding & ~SIMDE_MM_FROUND_NO_EXC) {
-    #if defined(simde_math_nearbyint)
-      case SIMDE_MM_FROUND_TO_NEAREST_INT:
-      case SIMDE_MM_FROUND_CUR_DIRECTION:
-        #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-          r_.altivec_f64 = (SIMDE_POWER_ALTIVEC_VECTOR(double)) vec_round(a_.altivec_f64);
-        #else
-          SIMDE_VECTORIZE
-          for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
-            r_.f64[i] = simde_math_nearbyint(a_.f64[i]);
-          }
-        #endif
-        break;
-    #endif
+    case SIMDE_MM_FROUND_CUR_DIRECTION:
+      #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+        r_.altivec_f64 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(double), vec_round(a_.altivec_f64));
+      #elif defined(SIMDE_ARM_NEON_A64V8_NATIVE) && 0
+        r_.neon_f64 = vrndiq_f64(a_.neon_f64);
+      #elif defined(simde_math_nearbyint)
+        SIMDE_VECTORIZE
+        for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+          r_.f64[i] = simde_math_nearbyint(a_.f64[i]);
+        }
+      #else
+        HEDLEY_UNREACHABLE_RETURN(simde_mm_undefined_pd());
+      #endif
+      break;
 
-    #if defined(simde_math_floor)
-      case SIMDE_MM_FROUND_TO_NEG_INF:
-        #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-          r_.altivec_f64 = (SIMDE_POWER_ALTIVEC_VECTOR(double)) vec_floor(a_.altivec_f64);
-        #else
-          SIMDE_VECTORIZE
-          for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
-            r_.f64[i] = simde_math_floor(a_.f64[i]);
-          }
-        #endif
-        break;
-    #endif
+    case SIMDE_MM_FROUND_TO_NEAREST_INT:
+      #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+        r_.altivec_f64 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(double), vec_round(a_.altivec_f64));
+      #elif defined(SIMDE_ARM_NEON_A64V8_NATIVE) && 0
+        r_.neon_f64 = vrndaq_f64(a_.neon_f64);
+      #elif defined(simde_math_round)
+        SIMDE_VECTORIZE
+        for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+          r_.f64[i] = simde_math_round(a_.f64[i]);
+        }
+      #else
+        HEDLEY_UNREACHABLE_RETURN(simde_mm_undefined_pd());
+      #endif
+      break;
 
-    #if defined(simde_math_ceil)
-      case SIMDE_MM_FROUND_TO_POS_INF:
-        #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-          r_.altivec_f64 = (SIMDE_POWER_ALTIVEC_VECTOR(double)) vec_ceil(a_.altivec_f64);
-        #else
-          SIMDE_VECTORIZE
-          for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
-            r_.f64[i] = simde_math_ceil(a_.f64[i]);
-          }
-        #endif
-        break;
-    #endif
+    case SIMDE_MM_FROUND_TO_NEG_INF:
+      #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+        r_.altivec_f64 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(double), vec_floor(a_.altivec_f64));
+      #elif defined(SIMDE_ARM_NEON_A64V8_NATIVE) && 0
+        r_.neon_f64 = vrndmq_f64(a_.neon_f64);
+      #else
+        SIMDE_VECTORIZE
+        for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+          r_.f64[i] = simde_math_floor(a_.f64[i]);
+        }
+      #endif
+      break;
 
-    #if defined(simde_math_trunc)
-      case SIMDE_MM_FROUND_TO_ZERO:
-        #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-          r_.altivec_f64 = (SIMDE_POWER_ALTIVEC_VECTOR(double)) vec_trunc(a_.altivec_f64);
-        #else
-          SIMDE_VECTORIZE
-          for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
-            r_.f64[i] = simde_math_trunc(a_.f64[i]);
-          }
-        #endif
-        break;
-    #endif
+    case SIMDE_MM_FROUND_TO_POS_INF:
+      #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+        r_.altivec_f64 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(double), vec_ceil(a_.altivec_f64));
+      #elif defined(SIMDE_ARM_NEON_A64V8_NATIVE) && 0
+        r_.neon_f64 = vrndpq_f64(a_.neon_f64);
+      #elif defined(simde_math_ceil)
+        SIMDE_VECTORIZE
+        for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+          r_.f64[i] = simde_math_ceil(a_.f64[i]);
+        }
+      #else
+        HEDLEY_UNREACHABLE_RETURN(simde_mm_undefined_pd());
+      #endif
+      break;
+
+    case SIMDE_MM_FROUND_TO_ZERO:
+      #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+        r_.altivec_f64 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(double), vec_trunc(a_.altivec_f64));
+      #elif defined(SIMDE_ARM_NEON_A64V8_NATIVE) && 0
+        r_.neon_f64 = vrndq_f64(a_.neon_f64);
+      #else
+        SIMDE_VECTORIZE
+        for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+          r_.f64[i] = simde_math_trunc(a_.f64[i]);
+        }
+      #endif
+      break;
 
     default:
       HEDLEY_UNREACHABLE_RETURN(simde_mm_undefined_pd());
@@ -18771,55 +18818,87 @@ simde_mm_round_ps (simde__m128 a, int rounding)
     r_,
     a_ = simde__m128_to_private(a);
 
+  /* For architectures which lack a current direction SIMD instruction. */
+  #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+    if ((rounding & 7) == SIMDE_MM_FROUND_CUR_DIRECTION)
+      rounding = HEDLEY_STATIC_CAST(int, SIMDE_MM_GET_ROUNDING_MODE()) << 13;
+  #endif
+
   switch (rounding & ~SIMDE_MM_FROUND_NO_EXC) {
-    #if defined(simde_math_nearbyintf)
-      case SIMDE_MM_FROUND_TO_NEAREST_INT:
-      case SIMDE_MM_FROUND_CUR_DIRECTION:
-        #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-          r_.altivec_f32 = (SIMDE_POWER_ALTIVEC_VECTOR(float)) vec_round(a_.altivec_f32);
-        #else
-          for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
-            r_.f32[i] = simde_math_nearbyintf(a_.f32[i]);
-          }
-        #endif
-        break;
-    #endif
+    case SIMDE_MM_FROUND_CUR_DIRECTION:
+      #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+        r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_round(a_.altivec_f32));
+      #elif defined(SIMDE_ARM_NEON_A32V8_NATIVE) && 0
+        r_.neon_f32 = vrndiq_f32(a_.neon_f32);
+      #elif defined(simde_math_nearbyintf)
+        SIMDE_VECTORIZE
+        for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+          r_.f32[i] = simde_math_nearbyintf(a_.f32[i]);
+        }
+      #else
+        HEDLEY_UNREACHABLE_RETURN(simde_mm_undefined_pd());
+      #endif
+      break;
 
-    #if defined(simde_math_floorf)
-      case SIMDE_MM_FROUND_TO_NEG_INF:
-        #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-          r_.altivec_f32 = (SIMDE_POWER_ALTIVEC_VECTOR(float)) vec_floor(a_.altivec_f32);
-        #else
-          for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
-            r_.f32[i] = simde_math_floorf(a_.f32[i]);
-          }
-        #endif
-        break;
-    #endif
+    case SIMDE_MM_FROUND_TO_NEAREST_INT:
+      #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+        r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_round(a_.altivec_f32));
+      #elif defined(SIMDE_ARM_NEON_A32V8_NATIVE) && 0
+        r_.neon_f32 = vrndaq_f32(a_.neon_f32);
+      #elif defined(simde_math_roundf)
+        SIMDE_VECTORIZE
+        for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+          r_.f32[i] = simde_math_roundf(a_.f32[i]);
+        }
+      #else
+        HEDLEY_UNREACHABLE_RETURN(simde_mm_undefined_pd());
+      #endif
+      break;
 
-    #if defined(simde_math_ceilf)
-      case SIMDE_MM_FROUND_TO_POS_INF:
-        #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-          r_.altivec_f32 = (SIMDE_POWER_ALTIVEC_VECTOR(float)) vec_ceil(a_.altivec_f32);
-        #else
-          for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
-            r_.f32[i] = simde_math_ceilf(a_.f32[i]);
-          }
-        #endif
-        break;
-    #endif
+    case SIMDE_MM_FROUND_TO_NEG_INF:
+      #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+        r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_floor(a_.altivec_f32));
+      #elif defined(SIMDE_ARM_NEON_A32V8_NATIVE) && 0
+        r_.neon_f32 = vrndmq_f32(a_.neon_f32);
+      #elif defined(simde_math_floorf)
+        SIMDE_VECTORIZE
+        for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+          r_.f32[i] = simde_math_floorf(a_.f32[i]);
+        }
+      #else
+        HEDLEY_UNREACHABLE_RETURN(simde_mm_undefined_pd());
+      #endif
+      break;
 
-    #if defined(simde_math_truncf)
-      case SIMDE_MM_FROUND_TO_ZERO:
-        #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-          r_.altivec_f32 = (SIMDE_POWER_ALTIVEC_VECTOR(float)) vec_trunc(a_.altivec_f32);
-        #else
-          for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
-            r_.f32[i] = simde_math_truncf(a_.f32[i]);
-          }
-        #endif
-        break;
-    #endif
+    case SIMDE_MM_FROUND_TO_POS_INF:
+      #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+        r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_ceil(a_.altivec_f32));
+      #elif defined(SIMDE_ARM_NEON_A32V8_NATIVE) && 0
+        r_.neon_f32 = vrndpq_f32(a_.neon_f32);
+      #elif defined(simde_math_ceilf)
+        SIMDE_VECTORIZE
+        for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+          r_.f32[i] = simde_math_ceilf(a_.f32[i]);
+        }
+      #else
+        HEDLEY_UNREACHABLE_RETURN(simde_mm_undefined_pd());
+      #endif
+      break;
+
+    case SIMDE_MM_FROUND_TO_ZERO:
+      #if defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
+        r_.altivec_f32 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(float), vec_trunc(a_.altivec_f32));
+      #elif defined(SIMDE_ARM_NEON_A32V8_NATIVE) && 0
+        r_.neon_f32 = vrndq_f32(a_.neon_f32);
+      #elif defined(simde_math_truncf)
+        SIMDE_VECTORIZE
+        for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+          r_.f32[i] = simde_math_truncf(a_.f32[i]);
+        }
+      #else
+        HEDLEY_UNREACHABLE_RETURN(simde_mm_undefined_pd());
+      #endif
+      break;
 
     default:
       HEDLEY_UNREACHABLE_RETURN(simde_mm_undefined_pd());
@@ -20294,7 +20373,7 @@ simde_mm_cmpgt_epi64 (simde__m128i a, simde__m128i b) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     r_.neon_i64 = vreinterpretq_s64_u64(vcgtq_s64(a_.neon_i64, b_.neon_i64));
   #elif defined(SIMDE_POWER_ALTIVEC_P5_NATIVE)
-    r_.altivec_i64 = (vector signed long long) vec_cmpgt(a_.altivec_i64, b_.altivec_i64);
+    r_.altivec_u64 = HEDLEY_REINTERPRET_CAST(SIMDE_POWER_ALTIVEC_VECTOR(unsigned long long), vec_cmpgt(a_.altivec_i64, b_.altivec_i64));
   #elif defined(SIMDE_VECTOR_SUBSCRIPT_OPS)
     r_.i64 = HEDLEY_STATIC_CAST(__typeof__(r_.i64), a_.i64 > b_.i64);
   #else
@@ -22015,8 +22094,7 @@ simde_mm256_round_ps (simde__m256 a, const int rounding) {
     a_ = simde__m256_to_private(a);
 
   switch (rounding & ~SIMDE_MM_FROUND_NO_EXC) {
-    #if defined(simde_math_nearbyint)
-      case SIMDE_MM_FROUND_TO_NEAREST_INT:
+    #if defined(simde_math_nearbyintf)
       case SIMDE_MM_FROUND_CUR_DIRECTION:
         for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
           r_.f32[i] = simde_math_nearbyintf(a_.f32[i]);
@@ -22024,7 +22102,15 @@ simde_mm256_round_ps (simde__m256 a, const int rounding) {
         break;
     #endif
 
-    #if defined(simde_math_floor)
+    #if defined(simde_math_roundf)
+      case SIMDE_MM_FROUND_TO_NEAREST_INT:
+        for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+          r_.f32[i] = simde_math_roundf(a_.f32[i]);
+        }
+        break;
+    #endif
+
+    #if defined(simde_math_floorf)
       case SIMDE_MM_FROUND_TO_NEG_INF:
         for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
           r_.f32[i] = simde_math_floorf(a_.f32[i]);
@@ -22032,7 +22118,7 @@ simde_mm256_round_ps (simde__m256 a, const int rounding) {
         break;
     #endif
 
-    #if defined(simde_math_ceil)
+    #if defined(simde_math_ceilf)
       case SIMDE_MM_FROUND_TO_POS_INF:
         for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
           r_.f32[i] = simde_math_ceilf(a_.f32[i]);
@@ -22040,7 +22126,7 @@ simde_mm256_round_ps (simde__m256 a, const int rounding) {
         break;
     #endif
 
-    #if defined(simde_math_trunc)
+    #if defined(simde_math_truncf)
       case SIMDE_MM_FROUND_TO_ZERO:
         for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
           r_.f32[i] = simde_math_truncf(a_.f32[i]);
@@ -22070,10 +22156,17 @@ simde_mm256_round_pd (simde__m256d a, const int rounding) {
 
   switch (rounding & ~SIMDE_MM_FROUND_NO_EXC) {
     #if defined(simde_math_nearbyint)
-      case SIMDE_MM_FROUND_TO_NEAREST_INT:
       case SIMDE_MM_FROUND_CUR_DIRECTION:
         for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
           r_.f64[i] = simde_math_nearbyint(a_.f64[i]);
+        }
+        break;
+    #endif
+
+    #if defined(simde_math_round)
+      case SIMDE_MM_FROUND_TO_NEAREST_INT:
+        for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+          r_.f64[i] = simde_math_round(a_.f64[i]);
         }
         break;
     #endif
@@ -32708,6 +32801,32 @@ simde_mm512_broadcast_f32x4 (simde__m128 a) {
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
+simde__m512
+simde_mm512_mask_broadcast_f32x4(simde__m512 src, simde__mmask16 k, simde__m128 a) {
+#if defined(SIMDE_X86_AVX512F_NATIVE)
+  return _mm512_mask_broadcast_f32x4(src, k, a);
+#else
+  return simde_mm512_mask_mov_ps(src, k, simde_mm512_broadcast_f32x4(a));
+#endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+#define _mm512_mask_broadcast_f32x4(src, k, a) simde_mm512_mask_broadcast_f32x4(src, k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512
+simde_mm512_maskz_broadcast_f32x4(simde__mmask16 k, simde__m128 a) {
+#if defined(SIMDE_X86_AVX512F_NATIVE)
+  return _mm512_maskz_broadcast_f32x4(k, a);
+#else
+  return simde_mm512_maskz_mov_ps(k, simde_mm512_broadcast_f32x4(a));
+#endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+#define _mm512_maskz_broadcast_f32x4(k, a) simde_mm512_maskz_broadcast_f32x4(k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
 simde__m512d
 simde_mm512_broadcast_f64x4 (simde__m256d a) {
   #if defined(SIMDE_X86_AVX512F_NATIVE)
@@ -32726,6 +32845,32 @@ simde_mm512_broadcast_f64x4 (simde__m256d a) {
 #if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
   #undef _mm512_broadcast_f64x4
   #define _mm512_broadcast_f64x4(a) simde_mm512_broadcast_f64x4(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512d
+simde_mm512_mask_broadcast_f64x4(simde__m512d src, simde__mmask8 k, simde__m256d a) {
+#if defined(SIMDE_X86_AVX512F_NATIVE)
+  return _mm512_mask_broadcast_f64x4(src, k, a);
+#else
+  return simde_mm512_mask_mov_pd(src, k, simde_mm512_broadcast_f64x4(a));
+#endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+#define _mm512_mask_broadcast_f64x4(src, k, a) simde_mm512_mask_broadcast_f64x4(src, k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512d
+simde_mm512_maskz_broadcast_f64x4(simde__mmask8 k, simde__m256d a) {
+#if defined(SIMDE_X86_AVX512F_NATIVE)
+  return _mm512_maskz_broadcast_f64x4(k, a);
+#else
+  return simde_mm512_maskz_mov_pd(k, simde_mm512_broadcast_f64x4(a));
+#endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+#define _mm512_maskz_broadcast_f64x4(k, a) simde_mm512_maskz_broadcast_f64x4(k, a)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
@@ -32757,6 +32902,32 @@ simde_mm512_broadcast_i32x4 (simde__m128i a) {
 
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m512i
+simde_mm512_mask_broadcast_i32x4(simde__m512i src, simde__mmask16 k, simde__m128i a) {
+#if defined(SIMDE_X86_AVX512F_NATIVE)
+  return _mm512_mask_broadcast_i32x4(src, k, a);
+#else
+  return simde_mm512_mask_mov_epi32(src, k, simde_mm512_broadcast_i32x4(a));
+#endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+#define _mm512_mask_broadcast_i32x4(src, k, a) simde_mm512_mask_broadcast_i32x4(src, k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512i
+simde_mm512_maskz_broadcast_i32x4(simde__mmask16 k, simde__m128i a) {
+#if defined(SIMDE_X86_AVX512F_NATIVE)
+  return _mm512_maskz_broadcast_i32x4(k, a);
+#else
+  return simde_mm512_maskz_mov_epi32(k, simde_mm512_broadcast_i32x4(a));
+#endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+#define _mm512_maskz_broadcast_i32x4(k, a) simde_mm512_maskz_broadcast_i32x4(k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512i
 simde_mm512_broadcast_i64x4 (simde__m256i a) {
   #if defined(SIMDE_X86_AVX512F_NATIVE)
     return _mm512_broadcast_i64x4(a);
@@ -32774,6 +32945,32 @@ simde_mm512_broadcast_i64x4 (simde__m256i a) {
 #if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
   #undef _mm512_broadcast_i64x4
   #define _mm512_broadcast_i64x4(a) simde_mm512_broadcast_i64x4(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512i
+simde_mm512_mask_broadcast_i64x4(simde__m512i src, simde__mmask8 k, simde__m256i a) {
+#if defined(SIMDE_X86_AVX512F_NATIVE)
+  return _mm512_mask_broadcast_i64x4(src, k, a);
+#else
+  return simde_mm512_mask_mov_epi64(src, k, simde_mm512_broadcast_i64x4(a));
+#endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+#define _mm512_mask_broadcast_i64x4(src, k, a) simde_mm512_mask_broadcast_i64x4(src, k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512i
+simde_mm512_maskz_broadcast_i64x4(simde__mmask8 k, simde__m256i a) {
+#if defined(SIMDE_X86_AVX512F_NATIVE)
+  return _mm512_maskz_broadcast_i64x4(k, a);
+#else
+  return simde_mm512_maskz_mov_epi64(k, simde_mm512_broadcast_i64x4(a));
+#endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+#define _mm512_maskz_broadcast_i64x4(k, a) simde_mm512_maskz_broadcast_i64x4(k, a)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES

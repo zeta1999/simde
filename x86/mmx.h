@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* cafec4b952fa5a31a51a10326f97c2e7c9067771 */
+/* 263118c3333515531134126d5395f1ee70ba8bb8 */
 /* :: Begin x86/mmx.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -3982,6 +3982,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_nearbyintf(v) std::nearbyint(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_nearbyintf(v) nearbyintf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_round)
+  #if SIMDE_MATH_BUILTIN_LIBM(round)
+    #define simde_math_round(v) __builtin_round(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_round(v) std::round(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_round(v) round(v)
+  #endif
+#endif
+
+#if !defined(simde_math_roundf)
+  #if SIMDE_MATH_BUILTIN_LIBM(roundf)
+    #define simde_math_roundf(v) __builtin_roundf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_roundf(v) std::round(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_roundf(v) roundf(v)
   #endif
 #endif
 
