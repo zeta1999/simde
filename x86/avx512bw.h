@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* fc245b8fd6ec147919ecc9fbc2034147b3f66a83 */
+/* c0e36c9fa3a9dd6c104db71c3416e553e42c49b8 */
 /* :: Begin x86/avx512bw.h :: */
 /* SPDX-License-Identifier: MIT
  *
