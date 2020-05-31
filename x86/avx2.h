@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 2ef6af1bb42caba8ffa05f031e2cfe635e804d76 */
+/* 2b842a6bb40ad1123d2cc6ed6c7e654d857170e6 */
 /* :: Begin x86/avx2.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -3965,6 +3965,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_atan(v) std::atan(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_atan(v) atan(v)
+  #endif
+#endif
+
+#if !defined(simde_math_atan2)
+  #if SIMDE_MATH_BUILTIN_LIBM(atan2)
+    #define simde_math_atan2(y, x) __builtin_atan2(y, x)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_atan2(y, x) std::atan2(y, x)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_atan2(y, x) atan2(y, x)
+  #endif
+#endif
+
+#if !defined(simde_math_atan2f)
+  #if SIMDE_MATH_BUILTIN_LIBM(atan2f)
+    #define simde_math_atan2f(y, x) __builtin_atan2f(y, x)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_atan2f(y, x) std::atan2(y, x)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_atan2f(y, x) atan2f(y, x)
   #endif
 #endif
 

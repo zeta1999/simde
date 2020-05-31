@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 2ef6af1bb42caba8ffa05f031e2cfe635e804d76 */
+/* 2b842a6bb40ad1123d2cc6ed6c7e654d857170e6 */
 /* :: Begin x86/svml.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -3995,6 +3995,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_atan(v) std::atan(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_atan(v) atan(v)
+  #endif
+#endif
+
+#if !defined(simde_math_atan2)
+  #if SIMDE_MATH_BUILTIN_LIBM(atan2)
+    #define simde_math_atan2(y, x) __builtin_atan2(y, x)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_atan2(y, x) std::atan2(y, x)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_atan2(y, x) atan2(y, x)
+  #endif
+#endif
+
+#if !defined(simde_math_atan2f)
+  #if SIMDE_MATH_BUILTIN_LIBM(atan2f)
+    #define simde_math_atan2f(y, x) __builtin_atan2f(y, x)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_atan2f(y, x) std::atan2(y, x)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_atan2f(y, x) atan2f(y, x)
   #endif
 #endif
 
@@ -37073,6 +37093,54 @@ simde_mm512_mask_atan_pd(simde__m512d src, simde__mmask8 k, simde__m512d a) {
 #if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
   #undef _mm512_mask_atan_pd
   #define _mm512_mask_atan_pd(src, k, a) simde_mm512_mask_atan_pd(src, k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m128
+simde_mm_atan2_ps (simde__m128 a, simde__m128 b) {
+  #if defined(SIMDE_X86_SVML_NATIVE)
+    return _mm_atan2_ps(a, b);
+  #else
+    simde__m128_private
+      r_,
+      a_ = simde__m128_to_private(a),
+      b_ = simde__m128_to_private(b);
+
+    SIMDE_VECTORIZE
+    for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+      r_.f32[i] =  simde_math_atan2f(a_.f32[i], b_.f32[i]);
+    }
+
+    return simde__m128_from_private(r_);
+  #endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+  #undef _mm_atan2_ps
+  #define _mm_atan2_ps(a, b) simde_mm_atan2_ps(a, b)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m128d
+simde_mm_atan2_pd (simde__m128d a, simde__m128d b) {
+  #if defined(SIMDE_X86_SVML_NATIVE)
+    return _mm_atan2_pd(a, b);
+  #else
+    simde__m128d_private
+      r_,
+      a_ = simde__m128d_to_private(a),
+      b_ = simde__m128d_to_private(b);
+
+    SIMDE_VECTORIZE
+    for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+      r_.f64[i] =  simde_math_atan2(a_.f64[i], b_.f64[i]);
+    }
+
+    return simde__m128d_from_private(r_);
+  #endif
+}
+#if defined(SIMDE_X86_SVML_ENABLE_NATIVE_ALIASES)
+  #undef _mm_atan2_pd
+  #define _mm_atan2_pd(a, b) simde_mm_atan2_pd(a, b)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
