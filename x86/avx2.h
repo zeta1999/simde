@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 2b842a6bb40ad1123d2cc6ed6c7e654d857170e6 */
+/* adf98a14c30dcf1ce60f4832dd596bdd97381972 */
 /* :: Begin x86/avx2.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -2945,6 +2945,7 @@ HEDLEY_DIAGNOSTIC_POP
  */
 
 #if !defined(SIMDE_DIAGNOSTIC_H)
+#define SIMDE_DIAGNOSTIC_H
 
 
 /* This is only to help us implement functions like _mm_undefined_ps. */
@@ -3145,7 +3146,7 @@ HEDLEY_DIAGNOSTIC_POP
   SIMDE_DIAGNOSTIC_DISABLE_CPP98_COMPAT_PEDANTIC \
   SIMDE_DIAGNOSTIC_DISABLE_BUGGY_UNUSED_BUT_SET_VARIBALE
 
-#endif
+#endif /* !defined(SIMDE_DIAGNOSTIC_H) */
 /* :: End simde-diagnostic.h :: */
 
 #include <stddef.h>
@@ -4135,6 +4136,46 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_floorf(v) std::floor(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_floorf(v) floorf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_log)
+  #if SIMDE_MATH_BUILTIN_LIBM(log)
+    #define simde_math_log(v) __builtin_log(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_log(v) std::log(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_log(v) log(v)
+  #endif
+#endif
+
+#if !defined(simde_math_logf)
+  #if SIMDE_MATH_BUILTIN_LIBM(logf)
+    #define simde_math_logf(v) __builtin_logf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_logf(v) std::log(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_logf(v) logf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_log10)
+  #if SIMDE_MATH_BUILTIN_LIBM(log10)
+    #define simde_math_log10(v) __builtin_log10(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_log10(v) std::log10(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_log10(v) log10(v)
+  #endif
+#endif
+
+#if !defined(simde_math_log10f)
+  #if SIMDE_MATH_BUILTIN_LIBM(log10f)
+    #define simde_math_log10f(v) __builtin_log10f(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_log10f(v) std::log10(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_log10f(v) log10f(v)
   #endif
 #endif
 
