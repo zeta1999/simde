@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 311b314e9e0e8ce9dad73c5213fd9c9da25b5128 */
+/* c29da9fa096bc9d60fe41be1b46a0cd3e1ee879b */
 /* :: Begin x86/gfni.h :: */
 /* Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -4160,6 +4160,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_acosf(v) std::acos(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_acosf(v) acosf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_cbrt)
+  #if SIMDE_MATH_BUILTIN_LIBM(cbrt)
+    #define simde_math_cbrt(v) __builtin_cbrt(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cbrt(v) std::cbrt(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cbrt(v) cbrt(v)
+  #endif
+#endif
+
+#if !defined(simde_math_cbrtf)
+  #if SIMDE_MATH_BUILTIN_LIBM(cbrtf)
+    #define simde_math_cbrtf(v) __builtin_cbrtf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cbrtf(v) std::cbrt(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cbrtf(v) cbrtf(v)
   #endif
 #endif
 
@@ -32216,39 +32236,93 @@ simde_mm512_movepi64_mask (simde__m512i a) {
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
-simde__m512i
-simde_mm512_load_si512 (simde__m512i const * mem_addr) {
-  simde_assert_aligned(64, mem_addr);
-
+simde__m512
+simde_mm512_loadu_ps (void const * mem_addr) {
   #if defined(SIMDE_X86_AVX512F_NATIVE)
-    return _mm512_load_si512(HEDLEY_REINTERPRET_CAST(__m512i const*, mem_addr));
-  #elif defined(SIMDE_ARCH_AARCH64) && (defined(HEDLEY_GCC_VERSION) && !HEDLEY_GCC_VERSION_CHECK(8,0,0))
-    simde__m512i r;
+    return _mm512_loadu_ps(mem_addr);
+  #else
+    simde__m512 r;
     simde_memcpy(&r, mem_addr, sizeof(r));
     return r;
-  #else
-    return *mem_addr;
   #endif
 }
 #if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
-  #undef _mm512_load_si512
-  #define _mm512_load_si512(a) simde_mm512_load_si512(a)
+  #undef _mm512_loadu_ps
+  #define _mm512_loadu_ps(a) simde_mm512_loadu_ps(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512d
+simde_mm512_loadu_pd (void const * mem_addr) {
+  #if defined(SIMDE_X86_AVX512F_NATIVE)
+    return _mm512_loadu_pd(mem_addr);
+  #else
+    simde__m512d r;
+    simde_memcpy(&r, mem_addr, sizeof(r));
+    return r;
+  #endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_loadu_pd
+  #define _mm512_loadu_pd(a) simde_mm512_loadu_pd(a)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m512i
-simde_mm512_loadu_si512 (simde__m512i const * mem_addr) {
+simde_mm512_load_si512 (void const * mem_addr) {
+  simde_assert_aligned(64, mem_addr);
+
   #if defined(SIMDE_X86_AVX512F_NATIVE)
-    return _mm512_loadu_si512(HEDLEY_REINTERPRET_CAST(__m512i const*, mem_addr));
+    return _mm512_load_si512(HEDLEY_REINTERPRET_CAST(void const*, mem_addr));
+  #else
+    simde__m512i r;
+    simde_memcpy(&r, SIMDE_ASSUME_ALIGNED(64, mem_addr), sizeof(r));
+    return r;
+  #endif
+}
+#define simde_mm512_load_epi8(mem_addr) simde_mm512_load_si512(mem_addr)
+#define simde_mm512_load_epi16(mem_addr) simde_mm512_load_si512(mem_addr)
+#define simde_mm512_load_epi32(mem_addr) simde_mm512_load_si512(mem_addr)
+#define simde_mm512_load_epi64(mem_addr) simde_mm512_load_si512(mem_addr)
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_load_epi8
+  #undef _mm512_load_epi16
+  #undef _mm512_load_epi32
+  #undef _mm512_load_epi64
+  #undef _mm512_load_si512
+  #define _mm512_load_si512(a) simde_mm512_load_si512(a)
+  #define _mm512_load_epi8(a) simde_mm512_load_si512(a)
+  #define _mm512_load_epi16(a) simde_mm512_load_si512(a)
+  #define _mm512_load_epi32(a) simde_mm512_load_si512(a)
+  #define _mm512_load_epi64(a) simde_mm512_load_si512(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512i
+simde_mm512_loadu_si512 (void const * mem_addr) {
+  #if defined(SIMDE_X86_AVX512F_NATIVE)
+    return _mm512_loadu_si512(HEDLEY_REINTERPRET_CAST(void const*, mem_addr));
   #else
     simde__m512i r;
     simde_memcpy(&r, mem_addr, sizeof(r));
     return r;
   #endif
 }
+#define simde_mm512_loadu_epi8(mem_addr) simde_mm512_loadu_si512(mem_addr)
+#define simde_mm512_loadu_epi16(mem_addr) simde_mm512_loadu_si512(mem_addr)
+#define simde_mm512_loadu_epi32(mem_addr) simde_mm512_loadu_si512(mem_addr)
+#define simde_mm512_loadu_epi64(mem_addr) simde_mm512_loadu_si512(mem_addr)
 #if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_loadu_epi8
+  #undef _mm512_loadu_epi16
+  #undef _mm512_loadu_epi32
+  #undef _mm512_loadu_epi64
   #undef _mm512_loadu_si512
   #define _mm512_loadu_si512(a) simde_mm512_loadu_si512(a)
+  #define _mm512_loadu_epi8(a) simde_mm512_loadu_si512(a)
+  #define _mm512_loadu_epi16(a) simde_mm512_loadu_si512(a)
+  #define _mm512_loadu_epi32(a) simde_mm512_loadu_si512(a)
+  #define _mm512_loadu_epi64(a) simde_mm512_loadu_si512(a)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES
@@ -37538,6 +37612,34 @@ simde_mm512_add_epi16 (simde__m512i a, simde__m512i b) {
 #if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
   #undef _mm512_add_epi16
   #define _mm512_add_epi16(a, b) simde_mm512_add_epi16(a, b)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512i
+simde_mm512_mask_add_epi16 (simde__m512i src, simde__mmask32 k, simde__m512i a, simde__m512i b) {
+  #if defined(SIMDE_X86_AVX512BW_NATIVE)
+    return _mm512_mask_add_epi16(src, k, a, b);
+  #else
+    return simde_mm512_mask_mov_epi16(src, k, simde_mm512_add_epi16(a, b));
+  #endif
+}
+#if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_mask_add_epi16
+  #define _mm512_mask_add_epi16(src, k, a, b) simde_mm512_mask_add_epi16(src, k, a, b)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512i
+simde_mm512_maskz_add_epi16 (simde__mmask32 k, simde__m512i a, simde__m512i b) {
+  #if defined(SIMDE_X86_AVX512BW_NATIVE)
+    return _mm512_maskz_add_epi16(k, a, b);
+  #else
+    return simde_mm512_maskz_mov_epi16(k, simde_mm512_add_epi16(a, b));
+  #endif
+}
+#if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_maskz_add_epi16
+  #define _mm512_maskz_add_epi16(k, a, b) simde_mm512_maskz_add_epi16(k, a, b)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES

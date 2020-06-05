@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 311b314e9e0e8ce9dad73c5213fd9c9da25b5128 */
+/* c29da9fa096bc9d60fe41be1b46a0cd3e1ee879b */
 /* :: Begin x86/sse4.2.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -4031,6 +4031,26 @@ typedef SIMDE_FLOAT64_TYPE simde_float64;
     #define simde_math_acosf(v) std::acos(v)
   #elif defined(SIMDE_MATH_HAVE_MATH_H)
     #define simde_math_acosf(v) acosf(v)
+  #endif
+#endif
+
+#if !defined(simde_math_cbrt)
+  #if SIMDE_MATH_BUILTIN_LIBM(cbrt)
+    #define simde_math_cbrt(v) __builtin_cbrt(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cbrt(v) std::cbrt(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cbrt(v) cbrt(v)
+  #endif
+#endif
+
+#if !defined(simde_math_cbrtf)
+  #if SIMDE_MATH_BUILTIN_LIBM(cbrtf)
+    #define simde_math_cbrtf(v) __builtin_cbrtf(v)
+  #elif defined(SIMDE_MATH_HAVE_CMATH)
+    #define simde_math_cbrtf(v) std::cbrt(v)
+  #elif defined(SIMDE_MATH_HAVE_MATH_H)
+    #define simde_math_cbrtf(v) cbrtf(v)
   #endif
 #endif
 
