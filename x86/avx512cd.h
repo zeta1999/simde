@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 0aa66481fae94ad176b2524198d7689c744ef2d2 */
+/* 6b4a0891eb62c2d27e6cf408a661d4dbd0d33dbc */
 /* :: Begin x86/avx512cd.h :: */
 /* SPDX-License-Identifier: MIT
  *
