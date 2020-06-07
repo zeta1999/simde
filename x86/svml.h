@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 6b4a0891eb62c2d27e6cf408a661d4dbd0d33dbc */
+/* 7eb1094b862a6c79b6fd9f7323e2d3d4f44942b8 */
 /* :: Begin x86/svml.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -3200,6 +3200,15 @@ HEDLEY_DIAGNOSTIC_POP
   #define SIMDE_DIAGNOSTIC_DISABLE_BUGGY_UNUSED_BUT_SET_VARIBALE_ _Pragma("GCC diagnostic ignored \"-Wunused-but-set-variable\"")
 #else
   #define SIMDE_DIAGNOSTIC_DISABLE_BUGGY_UNUSED_BUT_SET_VARIBALE_
+#endif
+
+/* This is the warning that you normally define _CRT_SECURE_NO_WARNINGS
+ * to silence, but you have to do that before including anything and
+ * that would require reordering includes. */
+#if defined(_MSC_VER)
+  #define SIMDE_DIAGNOSTIC_DISABLE_ANNEX_K_ __pragma(warning(disable:4996))
+#else
+  #define SIMDE_DIAGNOSTIC_DISABLE_ANNEX_K_
 #endif
 
 /* Some compilers, such as clang, may use `long long` for 64-bit
@@ -36583,6 +36592,92 @@ simde_mm512_maskz_permutex2var_ps (simde__mmask16 k, simde__m512 a, simde__m512i
 #if defined(SIMDE_X86_AVX512BW_ENABLE_NATIVE_ALIASES)
   #undef _mm512_maskz_permutex2var_ps
 #define _mm512_maskz_permutex2var_ps(k, a, idx, b) simde_mm512_maskz_permutex2var_ps(k, a, idx, b)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512
+simde_mm512_sqrt_ps (simde__m512 a) {
+  #if defined(SIMDE_X86_AVX512F_NATIVE)
+    return _mm512_sqrt_ps(a);
+  #else
+    simde__m512_private
+      r_,
+      a_ = simde__m512_to_private(a);
+
+    #if defined(SIMDE_X86_AVX_NATIVE)
+      r_.m256[0] = simde_mm256_sqrt_ps(a_.m256[0]);
+      r_.m256[1] = simde_mm256_sqrt_ps(a_.m256[1]);
+    #elif defined(simde_math_sqrtf)
+      SIMDE_VECTORIZE
+      for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
+        r_.f32[i] = simde_math_sqrtf(a_.f32[i]);
+      }
+    #else
+      HEDLEY_UNREACHABLE();
+    #endif
+
+    return simde__m512_from_private(r_);
+  #endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+#  define _mm512_sqrt_ps(a) simde_mm512_sqrt_ps(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512
+simde_mm512_mask_sqrt_ps(simde__m512 src, simde__mmask16 k, simde__m512 a) {
+  #if defined(SIMDE_X86_AVX512F_NATIVE)
+    return _mm512_mask_sqrt_ps(src, k, a);
+  #else
+    return simde_mm512_mask_mov_ps(src, k, simde_mm512_sqrt_ps(a));
+  #endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_mask_sqrt_ps
+  #define _mm512_mask_sqrt_ps(src, k, a) simde_mm512_mask_sqrt_ps(src, k, a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512d
+simde_mm512_sqrt_pd (simde__m512d a) {
+  #if defined(SIMDE_X86_AVX512F_NATIVE)
+    return _mm512_sqrt_pd(a);
+  #else
+    simde__m512d_private
+      r_,
+      a_ = simde__m512d_to_private(a);
+
+    #if defined(SIMDE_X86_AVX_NATIVE)
+      r_.m256d[0] = simde_mm256_sqrt_pd(a_.m256d[0]);
+      r_.m256d[1] = simde_mm256_sqrt_pd(a_.m256d[1]);
+    #elif defined(simde_math_sqrt)
+      SIMDE_VECTORIZE
+      for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
+        r_.f64[i] = simde_math_sqrt(a_.f64[i]);
+      }
+    #else
+      HEDLEY_UNREACHABLE();
+    #endif
+
+    return simde__m512d_from_private(r_);
+  #endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+#  define _mm512_sqrt_pd(a) simde_mm512_sqrt_pd(a)
+#endif
+
+SIMDE_FUNCTION_ATTRIBUTES
+simde__m512d
+simde_mm512_mask_sqrt_pd(simde__m512d src, simde__mmask8 k, simde__m512d a) {
+  #if defined(SIMDE_X86_AVX512F_NATIVE)
+    return _mm512_mask_sqrt_pd(src, k, a);
+  #else
+    return simde_mm512_mask_mov_pd(src, k, simde_mm512_sqrt_pd(a));
+  #endif
+}
+#if defined(SIMDE_X86_AVX512F_ENABLE_NATIVE_ALIASES)
+  #undef _mm512_mask_sqrt_pd
+  #define _mm512_mask_sqrt_pd(src, k, a) simde_mm512_mask_sqrt_pd(src, k, a)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES

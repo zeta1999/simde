@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 6b4a0891eb62c2d27e6cf408a661d4dbd0d33dbc */
+/* 7eb1094b862a6c79b6fd9f7323e2d3d4f44942b8 */
 /* :: Begin x86/sse4.2.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -3168,6 +3168,15 @@ HEDLEY_DIAGNOSTIC_POP
   #define SIMDE_DIAGNOSTIC_DISABLE_BUGGY_UNUSED_BUT_SET_VARIBALE_ _Pragma("GCC diagnostic ignored \"-Wunused-but-set-variable\"")
 #else
   #define SIMDE_DIAGNOSTIC_DISABLE_BUGGY_UNUSED_BUT_SET_VARIBALE_
+#endif
+
+/* This is the warning that you normally define _CRT_SECURE_NO_WARNINGS
+ * to silence, but you have to do that before including anything and
+ * that would require reordering includes. */
+#if defined(_MSC_VER)
+  #define SIMDE_DIAGNOSTIC_DISABLE_ANNEX_K_ __pragma(warning(disable:4996))
+#else
+  #define SIMDE_DIAGNOSTIC_DISABLE_ANNEX_K_
 #endif
 
 /* Some compilers, such as clang, may use `long long` for 64-bit
