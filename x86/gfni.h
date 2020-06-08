@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* f58d2fa2dc0781a3efe5ecbaa9145f09df390f59 */
+/* 1392d4ef64953013ddcd102ad3071e7907f653c7 */
 /* :: Begin x86/gfni.h :: */
 /* Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
