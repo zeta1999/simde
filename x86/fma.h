@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 9bc1e7b7c95141dae72a64e51c3e94c853fc5d38 */
+/* df9c01eacc08b1ba8bf999b959413af2d7099a44 */
 /* :: Begin x86/fma.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -14465,17 +14465,18 @@ simde_mm_loadh_pd (simde__m128d a, simde_float64 const* mem_addr) {
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m128i
 simde_mm_loadl_epi64 (simde__m128i const* mem_addr) {
-  simde_assert_aligned(16, mem_addr);
-
 #if defined(SIMDE_X86_SSE2_NATIVE)
-  return _mm_loadl_epi64(HEDLEY_REINTERPRET_CAST(__m128i const*, mem_addr));
+  return _mm_loadl_epi64(mem_addr);
 #else
   simde__m128i_private r_;
 
+  int64_t value;
+  simde_memcpy(&value, mem_addr, sizeof(value));
+
   #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
-    r_.neon_i32 = vcombine_s32(vld1_s32((int32_t const *) mem_addr), vcreate_s32(0));
+    r_.neon_i64 = vcombine_s64(vld1_s64(HEDLEY_REINTERPRET_CAST(int64_t const *, mem_addr)), vdup_n_s64(0));
   #else
-    r_.i64[0] = *HEDLEY_REINTERPRET_CAST(int64_t const*, mem_addr);
+    r_.i64[0] = value;
     r_.i64[1] = 0;
   #endif
 
@@ -25096,11 +25097,10 @@ simde_mm_maskload_pd (const simde_float64 mem_addr[HEDLEY_ARRAY_PARAM(4)], simde
   simde__m128d_private r_;
   simde__m128i_private mask_ = simde__m128i_to_private(mask);
 
+  r_ = simde__m128d_to_private(simde_mm_loadu_pd(mem_addr));
   SIMDE_VECTORIZE
   for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
-    int64_t tmp;
-    simde_memcpy(&tmp, &(mem_addr[i]), sizeof(simde_float64));
-    r_.i64[i] = tmp & (mask_.i64[i] >> 63);
+    r_.i64[i] &= mask_.i64[i] >> 63;
   }
 
   return simde__m128d_from_private(r_);
@@ -25119,9 +25119,10 @@ simde_mm256_maskload_pd (const simde_float64 mem_addr[HEDLEY_ARRAY_PARAM(4)], si
   simde__m256d_private r_;
   simde__m256i_private mask_ = simde__m256i_to_private(mask);
 
+  r_ = simde__m256d_to_private(simde_mm256_loadu_pd(mem_addr));
   SIMDE_VECTORIZE
   for (size_t i = 0 ; i < (sizeof(r_.f64) / sizeof(r_.f64[0])) ; i++) {
-    r_.i64[i] = HEDLEY_REINTERPRET_CAST(int64_t const*, mem_addr)[i] & (mask_.i64[i] >> 63);
+    r_.i64[i] &= mask_.i64[i] >> 63;
   }
 
   return simde__m256d_from_private(r_);
@@ -25140,9 +25141,10 @@ simde_mm_maskload_ps (const simde_float32 mem_addr[HEDLEY_ARRAY_PARAM(4)], simde
   simde__m128_private r_;
   simde__m128i_private mask_ = simde__m128i_to_private(mask);
 
+  r_ = simde__m128_to_private(simde_mm_loadu_ps(mem_addr));
   SIMDE_VECTORIZE
   for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
-    r_.i32[i] = HEDLEY_REINTERPRET_CAST(int32_t const*, mem_addr)[i] & (mask_.i32[i] >> 31);
+    r_.i32[i] &= mask_.i32[i] >> 31;
   }
 
   return simde__m128_from_private(r_);
@@ -25161,9 +25163,10 @@ simde_mm256_maskload_ps (const simde_float32 mem_addr[HEDLEY_ARRAY_PARAM(4)], si
   simde__m256_private r_;
   simde__m256i_private mask_ = simde__m256i_to_private(mask);
 
+  r_ = simde__m256_to_private(simde_mm256_loadu_ps(mem_addr));
   SIMDE_VECTORIZE
   for (size_t i = 0 ; i < (sizeof(r_.f32) / sizeof(r_.f32[0])) ; i++) {
-    r_.i32[i] = HEDLEY_REINTERPRET_CAST(int32_t const*, mem_addr)[i] & (mask_.i32[i] >> 31);
+    r_.i32[i] &= mask_.i32[i] >> 31;
   }
 
   return simde__m256_from_private(r_);
