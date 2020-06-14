@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 053960c99a4120a67d39d179ee7be2b9f76ea33b */
+/* 8f6674452d15d7e40d72c50a2f063e42c250dda3 */
 /* :: Begin x86/avx.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -2873,6 +2873,16 @@ HEDLEY_DIAGNOSTIC_POP
   #define SIMDE_DIAGNOSTIC_DISABLE_RESERVED_ID_MACRO_ _Pragma("clang diagnostic ignored \"-Wreserved-id-macro\"")
 #else
   #define SIMDE_DIAGNOSTIC_DISABLE_RESERVED_ID_MACRO_
+#endif
+
+/* clang 3.8 warns about the packed attribute being unnecessary when
+ * used in the _mm_loadu_* functions.  That *may* be true for version
+ * 3.8, but for later versions it is crucial in order to make unaligned
+ * access safe. */
+#if HEDLEY_HAS_WARNING("-Wpacked")
+  #define SIMDE_DIAGNOSTIC_DISABLE_PACKED_ _Pragma("clang diagnostic ignored \"-Wpacked\"")
+#else
+  #define SIMDE_DIAGNOSTIC_DISABLE_PACKED_
 #endif
 
 /* Triggered when assigning a float to a double implicitly.  We use
@@ -9823,27 +9833,31 @@ simde__m128
 simde_mm_loadr_ps (simde_float32 const mem_addr[HEDLEY_ARRAY_PARAM(4)]) {
   simde_assert_aligned(16, mem_addr);
 
-#if defined(SIMDE_X86_SSE_NATIVE)
-  return _mm_loadr_ps(mem_addr);
-#else
-  simde__m128_private
-    r_,
-    v_ = simde__m128_to_private(simde_mm_load_ps(mem_addr));
+  #if defined(SIMDE_X86_SSE_NATIVE)
+    return _mm_loadr_ps(mem_addr);
+  #else
+    simde__m128_private
+      r_,
+      v_ = simde__m128_to_private(simde_mm_load_ps(mem_addr));
 
-#if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
-  r_.neon_f32 = vrev64q_f32(v_.neon_f32);
-  r_.neon_f32 = vextq_f32(r_.neon_f32, r_.neon_f32, 2);
-#elif defined(SIMDE_SHUFFLE_VECTOR_)
-  r_.f32 = SIMDE_SHUFFLE_VECTOR_(32, 16, v_.f32, v_.f32, 3, 2, 1, 0);
-#else
-  r_.f32[0] = v_.f32[3];
-  r_.f32[1] = v_.f32[2];
-  r_.f32[2] = v_.f32[1];
-  r_.f32[3] = v_.f32[0];
-#endif
+  #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
+    r_.neon_f32 = vrev64q_f32(v_.neon_f32);
+    r_.neon_f32 = vextq_f32(r_.neon_f32, r_.neon_f32, 2);
+  #elif defined(SIMDE_POWER_ALTIVEC_P8_NATIVE) && 0
+    /* TODO: XLC documentation has it, but it doesn't seem to work.
+    * More investigation is necessary. */
+    r_.altivec_f32 = vec_reve(a_.altivec_f32);
+  #elif defined(SIMDE_SHUFFLE_VECTOR_)
+    r_.f32 = SIMDE_SHUFFLE_VECTOR_(32, 16, v_.f32, v_.f32, 3, 2, 1, 0);
+  #else
+    r_.f32[0] = v_.f32[3];
+    r_.f32[1] = v_.f32[2];
+    r_.f32[2] = v_.f32[1];
+    r_.f32[3] = v_.f32[0];
+  #endif
 
-  return simde__m128_from_private(r_);
-#endif
+    return simde__m128_from_private(r_);
+  #endif
 }
 #if defined(SIMDE_X86_SSE_ENABLE_NATIVE_ALIASES)
 #  define _mm_loadr_ps(mem_addr) simde_mm_loadr_ps(mem_addr)
@@ -14608,14 +14622,24 @@ simde_x_mm_loadu_epi64(int64_t const* mem_addr) {
 
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m128i
-simde_mm_loadu_si128 (simde__m128i const* mem_addr) {
+simde_mm_loadu_si128 (void const* mem_addr) {
   #if defined(SIMDE_X86_SSE2_NATIVE)
     return _mm_loadu_si128(HEDLEY_STATIC_CAST(__m128i const*, mem_addr));
   #else
     simde__m128i_private r_;
 
-    #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
-      r_.neon_i32 = vld1q_s32((int32_t const*) mem_addr);
+    #if HEDLEY_GNUC_HAS_ATTRIBUTE(may_alias,3,3,0)
+      HEDLEY_DIAGNOSTIC_PUSH
+      SIMDE_DIAGNOSTIC_DISABLE_PACKED_
+      struct simde_mm_loadu_si128_s {
+        __typeof__(r_) v;
+      } __attribute__((__packed__, __may_alias__));
+      r_ = HEDLEY_REINTERPRET_CAST(const struct simde_mm_loadu_si128_s *, mem_addr)->v;
+      HEDLEY_DIAGNOSTIC_POP
+    #elif defined(SIMDE_ARM_NEON_A32V7_NATIVE)
+      /* Note that this is a lower priority than the struct above since
+       * clang assumes mem_addr is aligned (since it is a __m128i*). */
+      r_.neon_i32 = vld1q_s32(HEDLEY_REINTERPRET_CAST(int32_t const*, mem_addr));
     #else
       simde_memcpy(&r_, mem_addr, sizeof(r_));
     #endif
@@ -21549,6 +21573,27 @@ simde_mm_cmpistrz_16_(simde__m128i b) {
   #define _mm_cmpistrz(a, b, imm8) simde_mm_cmpistrz(a, b, imm8)
 #endif
 
+SIMDE_FUNCTION_ATTRIBUTES
+uint32_t
+simde_mm_crc32_u8(uint32_t prevcrc, uint8_t v) {
+  #if defined(SIMDE_X86_SSE4_2_NATIVE)
+    return _mm_crc32_u8(prevcrc, v);
+  #else
+    uint32_t crc = prevcrc;
+    crc ^= v;
+    for(int bit = 0 ; bit < 8 ; bit++) {
+      if (crc & 1)
+        crc = (crc >> 1) ^ UINT32_C(0x82f63b78);
+      else
+        crc = (crc >> 1);
+    }
+    return crc;
+  #endif
+}
+#if defined(SIMDE_X86_SSE4_2_ENABLE_NATIVE_ALIASES)
+  #define _mm_crc32_u8(prevcrc, v) simde_mm_crc32_u8(prevcrc, v)
+#endif
+
 SIMDE_END_DECLS_
 
 HEDLEY_DIAGNOSTIC_POP
@@ -25020,17 +25065,29 @@ simde_mm256_loadu_ps (const float a[HEDLEY_ARRAY_PARAM(8)]) {
 
 SIMDE_FUNCTION_ATTRIBUTES
 simde__m256i
-simde_mm256_loadu_si256 (simde__m256i const * a) {
-#if defined(SIMDE_X86_AVX_NATIVE)
-  return _mm256_loadu_si256(a);
-#else
-  simde__m256i r;
-  simde_memcpy(&r, a, sizeof(r));
-  return r;
-#endif
+simde_mm256_loadu_si256 (void const * mem_addr) {
+  #if defined(SIMDE_X86_AVX_NATIVE)
+    return _mm256_loadu_si256(SIMDE_ALIGN_CAST(const __m256i*, mem_addr));
+  #else
+    simde__m256i r;
+
+    #if HEDLEY_GNUC_HAS_ATTRIBUTE(may_alias,3,3,0)
+      HEDLEY_DIAGNOSTIC_PUSH
+      SIMDE_DIAGNOSTIC_DISABLE_PACKED_
+      struct simde_mm256_loadu_si256_s {
+        __typeof__(r) v;
+      } __attribute__((__packed__, __may_alias__));
+      r = HEDLEY_REINTERPRET_CAST(const struct simde_mm256_loadu_si256_s *, mem_addr)->v;
+      HEDLEY_DIAGNOSTIC_POP
+    #else
+      simde_memcpy(&r, mem_addr, sizeof(r));
+    #endif
+
+    return r;
+  #endif
 }
 #if defined(SIMDE_X86_AVX_ENABLE_NATIVE_ALIASES)
-#  define _mm256_loadu_si256(a) simde_mm256_loadu_si256(a)
+#  define _mm256_loadu_si256(mem_addr) simde_mm256_loadu_si256(mem_addr)
 #endif
 
 SIMDE_FUNCTION_ATTRIBUTES

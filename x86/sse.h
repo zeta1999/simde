@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 053960c99a4120a67d39d179ee7be2b9f76ea33b */
+/* 8f6674452d15d7e40d72c50a2f063e42c250dda3 */
 /* :: Begin x86/sse.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -2846,6 +2846,16 @@ HEDLEY_DIAGNOSTIC_POP
   #define SIMDE_DIAGNOSTIC_DISABLE_RESERVED_ID_MACRO_ _Pragma("clang diagnostic ignored \"-Wreserved-id-macro\"")
 #else
   #define SIMDE_DIAGNOSTIC_DISABLE_RESERVED_ID_MACRO_
+#endif
+
+/* clang 3.8 warns about the packed attribute being unnecessary when
+ * used in the _mm_loadu_* functions.  That *may* be true for version
+ * 3.8, but for later versions it is crucial in order to make unaligned
+ * access safe. */
+#if HEDLEY_HAS_WARNING("-Wpacked")
+  #define SIMDE_DIAGNOSTIC_DISABLE_PACKED_ _Pragma("clang diagnostic ignored \"-Wpacked\"")
+#else
+  #define SIMDE_DIAGNOSTIC_DISABLE_PACKED_
 #endif
 
 /* Triggered when assigning a float to a double implicitly.  We use
@@ -9796,27 +9806,31 @@ simde__m128
 simde_mm_loadr_ps (simde_float32 const mem_addr[HEDLEY_ARRAY_PARAM(4)]) {
   simde_assert_aligned(16, mem_addr);
 
-#if defined(SIMDE_X86_SSE_NATIVE)
-  return _mm_loadr_ps(mem_addr);
-#else
-  simde__m128_private
-    r_,
-    v_ = simde__m128_to_private(simde_mm_load_ps(mem_addr));
+  #if defined(SIMDE_X86_SSE_NATIVE)
+    return _mm_loadr_ps(mem_addr);
+  #else
+    simde__m128_private
+      r_,
+      v_ = simde__m128_to_private(simde_mm_load_ps(mem_addr));
 
-#if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
-  r_.neon_f32 = vrev64q_f32(v_.neon_f32);
-  r_.neon_f32 = vextq_f32(r_.neon_f32, r_.neon_f32, 2);
-#elif defined(SIMDE_SHUFFLE_VECTOR_)
-  r_.f32 = SIMDE_SHUFFLE_VECTOR_(32, 16, v_.f32, v_.f32, 3, 2, 1, 0);
-#else
-  r_.f32[0] = v_.f32[3];
-  r_.f32[1] = v_.f32[2];
-  r_.f32[2] = v_.f32[1];
-  r_.f32[3] = v_.f32[0];
-#endif
+  #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
+    r_.neon_f32 = vrev64q_f32(v_.neon_f32);
+    r_.neon_f32 = vextq_f32(r_.neon_f32, r_.neon_f32, 2);
+  #elif defined(SIMDE_POWER_ALTIVEC_P8_NATIVE) && 0
+    /* TODO: XLC documentation has it, but it doesn't seem to work.
+    * More investigation is necessary. */
+    r_.altivec_f32 = vec_reve(a_.altivec_f32);
+  #elif defined(SIMDE_SHUFFLE_VECTOR_)
+    r_.f32 = SIMDE_SHUFFLE_VECTOR_(32, 16, v_.f32, v_.f32, 3, 2, 1, 0);
+  #else
+    r_.f32[0] = v_.f32[3];
+    r_.f32[1] = v_.f32[2];
+    r_.f32[2] = v_.f32[1];
+    r_.f32[3] = v_.f32[0];
+  #endif
 
-  return simde__m128_from_private(r_);
-#endif
+    return simde__m128_from_private(r_);
+  #endif
 }
 #if defined(SIMDE_X86_SSE_ENABLE_NATIVE_ALIASES)
 #  define _mm_loadr_ps(mem_addr) simde_mm_loadr_ps(mem_addr)

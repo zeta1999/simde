@@ -1,5 +1,5 @@
 /* AUTOMATICALLY GENERATED FILE, DO NOT MODIFY */
-/* 053960c99a4120a67d39d179ee7be2b9f76ea33b */
+/* 8f6674452d15d7e40d72c50a2f063e42c250dda3 */
 /* :: Begin x86/mmx.h :: */
 /* SPDX-License-Identifier: MIT
  *
@@ -2813,6 +2813,16 @@ HEDLEY_DIAGNOSTIC_POP
   #define SIMDE_DIAGNOSTIC_DISABLE_RESERVED_ID_MACRO_ _Pragma("clang diagnostic ignored \"-Wreserved-id-macro\"")
 #else
   #define SIMDE_DIAGNOSTIC_DISABLE_RESERVED_ID_MACRO_
+#endif
+
+/* clang 3.8 warns about the packed attribute being unnecessary when
+ * used in the _mm_loadu_* functions.  That *may* be true for version
+ * 3.8, but for later versions it is crucial in order to make unaligned
+ * access safe. */
+#if HEDLEY_HAS_WARNING("-Wpacked")
+  #define SIMDE_DIAGNOSTIC_DISABLE_PACKED_ _Pragma("clang diagnostic ignored \"-Wpacked\"")
+#else
+  #define SIMDE_DIAGNOSTIC_DISABLE_PACKED_
 #endif
 
 /* Triggered when assigning a float to a double implicitly.  We use
