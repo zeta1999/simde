@@ -299,6 +299,8 @@ simde_uint8x8_t
 simde_vtst_s8(simde_int8x8_t a, simde_int8x8_t b) {
   #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
     return vtst_s8(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u8(simde_vtstq_s8(simde_vcombine_s8(a, a), simde_vcombine_s8(b, b)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vmvn_u8(simde_vceqz_s8(simde_vand_s8(a, b)));
   #else
@@ -329,6 +331,8 @@ simde_uint16x4_t
 simde_vtst_s16(simde_int16x4_t a, simde_int16x4_t b) {
   #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
     return vtst_s16(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u16(simde_vtstq_s16(simde_vcombine_s16(a, a), simde_vcombine_s16(b, b)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vmvn_u16(simde_vceqz_s16(simde_vand_s16(a, b)));
   #else
@@ -359,6 +363,8 @@ simde_uint32x2_t
 simde_vtst_s32(simde_int32x2_t a, simde_int32x2_t b) {
   #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
     return vtst_s32(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u32(simde_vtstq_s32(simde_vcombine_s32(a, a), simde_vcombine_s32(b, b)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vmvn_u32(simde_vceqz_s32(simde_vand_s32(a, b)));
   #else
@@ -389,6 +395,8 @@ simde_uint64x1_t
 simde_vtst_s64(simde_int64x1_t a, simde_int64x1_t b) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vtst_s64(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u64(simde_vtstq_s64(simde_vcombine_s64(a, a), simde_vcombine_s64(b, b)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vceqz_u64(simde_vceqz_s64(simde_vand_s64(a, b)));
   #else
@@ -419,6 +427,8 @@ simde_uint8x8_t
 simde_vtst_u8(simde_uint8x8_t a, simde_uint8x8_t b) {
   #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
     return vtst_u8(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u8(simde_vtstq_u8(simde_vcombine_u8(a, a), simde_vcombine_u8(b, b)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vmvn_u8(simde_vceqz_u8(simde_vand_u8(a, b)));
   #else
@@ -449,6 +459,8 @@ simde_uint16x4_t
 simde_vtst_u16(simde_uint16x4_t a, simde_uint16x4_t b) {
   #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
     return vtst_u16(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u16(simde_vtstq_u16(simde_vcombine_u16(a, a), simde_vcombine_u16(b, b)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vmvn_u16(simde_vceqz_u16(simde_vand_u16(a, b)));
   #else
@@ -479,6 +491,8 @@ simde_uint32x2_t
 simde_vtst_u32(simde_uint32x2_t a, simde_uint32x2_t b) {
   #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
     return vtst_u32(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u32(simde_vtstq_u32(simde_vcombine_u32(a, a), simde_vcombine_u32(b, b)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vmvn_u32(simde_vceqz_u32(simde_vand_u32(a, b)));
   #else
@@ -509,6 +523,8 @@ simde_uint64x1_t
 simde_vtst_u64(simde_uint64x1_t a, simde_uint64x1_t b) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vtst_u64(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u64(simde_vtstq_u64(simde_vcombine_u64(a, a), simde_vcombine_u64(b, b)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vceqz_u64(simde_vceqz_u64(simde_vand_u64(a, b)));
   #else

@@ -241,6 +241,8 @@ simde_vmvn_s8(simde_int8x8_t a) {
     return vmvn_s8(a);
   #elif defined(SIMDE_X86_MMX_NATIVE)
     return _mm_andnot_si64(a, _mm_cmpeq_pi8(a, a));
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_s8(simde_vmvnq_s8(simde_vcombine_s8(a, a)));
   #else
     simde_int8x8_private
       r_,
@@ -270,6 +272,8 @@ simde_vmvn_s16(simde_int16x4_t a) {
     return vmvn_s16(a);
   #elif defined(SIMDE_X86_MMX_NATIVE)
     return _mm_andnot_si64(a, _mm_cmpeq_pi16(a, a));
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_s16(simde_vmvnq_s16(simde_vcombine_s16(a, a)));
   #else
     simde_int16x4_private
       r_,
@@ -299,6 +303,8 @@ simde_vmvn_s32(simde_int32x2_t a) {
     return vmvn_s32(a);
   #elif defined(SIMDE_X86_MMX_NATIVE)
     return _mm_andnot_si64(a, _mm_cmpeq_pi32(a, a));
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_s32(simde_vmvnq_s32(simde_vcombine_s32(a, a)));
   #else
     simde_int32x2_private
       r_,
@@ -328,6 +334,8 @@ simde_vmvn_u8(simde_uint8x8_t a) {
     return vmvn_u8(a);
   #elif defined(SIMDE_X86_MMX_NATIVE)
     return _mm_andnot_si64(a, _mm_cmpeq_pi8(a, a));
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u8(simde_vmvnq_u8(simde_vcombine_u8(a, a)));
   #else
     simde_uint8x8_private
       r_,
@@ -357,6 +365,8 @@ simde_vmvn_u16(simde_uint16x4_t a) {
     return vmvn_u16(a);
   #elif defined(SIMDE_X86_MMX_NATIVE)
     return _mm_andnot_si64(a, _mm_cmpeq_pi16(a, a));
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u16(simde_vmvnq_u16(simde_vcombine_u16(a, a)));
   #else
     simde_uint16x4_private
       r_,
@@ -386,6 +396,8 @@ simde_vmvn_u32(simde_uint32x2_t a) {
     return vmvn_u32(a);
   #elif defined(SIMDE_X86_MMX_NATIVE)
     return _mm_andnot_si64(a, _mm_cmpeq_pi32(a, a));
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u32(simde_vmvnq_u32(simde_vcombine_u32(a, a)));
   #else
     simde_uint32x2_private
       r_,

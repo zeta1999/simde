@@ -411,6 +411,8 @@ simde_uint64x1_t
 simde_vcgt_f64(simde_float64x1_t a, simde_float64x1_t b) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vcgt_f64(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u64(simde_vcgtq_f64(simde_vcombine_f64(a, a), simde_vcombine_f64(b, b)));
   #else
     simde_float64x1_private
       a_ = simde_float64x1_to_private(a),
@@ -441,6 +443,8 @@ simde_vcgt_s8(simde_int8x8_t a, simde_int8x8_t b) {
     return vcgt_s8(a, b);
   #elif defined(SIMDE_X86_MMX_NATIVE)
     return _mm_cmpgt_pi8(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u8(simde_vcgtq_s8(simde_vcombine_s8(a, a), simde_vcombine_s8(b, b)));
   #else
     simde_int8x8_private
       a_ = simde_int8x8_to_private(a),
@@ -471,6 +475,8 @@ simde_vcgt_s16(simde_int16x4_t a, simde_int16x4_t b) {
     return vcgt_s16(a, b);
   #elif defined(SIMDE_X86_MMX_NATIVE)
     return _mm_cmpgt_pi16(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u16(simde_vcgtq_s16(simde_vcombine_s16(a, a), simde_vcombine_s16(b, b)));
   #else
     simde_int16x4_private
       a_ = simde_int16x4_to_private(a),
@@ -501,6 +507,8 @@ simde_vcgt_s32(simde_int32x2_t a, simde_int32x2_t b) {
     return vcgt_s32(a, b);
   #elif defined(SIMDE_X86_MMX_NATIVE)
     return _mm_cmpgt_pi32(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u32(simde_vcgtq_s32(simde_vcombine_s32(a, a), simde_vcombine_s32(b, b)));
   #else
     simde_int32x2_private
       a_ = simde_int32x2_to_private(a),
@@ -529,6 +537,8 @@ simde_uint64x1_t
 simde_vcgt_s64(simde_int64x1_t a, simde_int64x1_t b) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vcgt_s64(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u64(simde_vcgtq_s64(simde_vcombine_s64(a, a), simde_vcombine_s64(b, b)));
   #else
     simde_int64x1_private
       a_ = simde_int64x1_to_private(a),
@@ -560,6 +570,8 @@ simde_vcgt_u8(simde_uint8x8_t a, simde_uint8x8_t b) {
   #elif defined(SIMDE_X86_MMX_NATIVE)
     __m64 all_set = _mm_set1_pi8(INT8_MIN);
     return _mm_cmpgt_pi8(_mm_xor_si64(a, all_set), _mm_xor_si64(b, all_set));
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u8(simde_vcgtq_u8(simde_vcombine_u8(a, a), simde_vcombine_u8(b, b)));
   #else
     simde_uint8x8_private
       r_,
@@ -591,6 +603,8 @@ simde_vcgt_u16(simde_uint16x4_t a, simde_uint16x4_t b) {
   #elif defined(SIMDE_X86_MMX_NATIVE)
     __m64 all_set = _mm_set1_pi16(INT16_MIN);
     return _mm_cmpgt_pi16(_mm_xor_si64(a, all_set), _mm_xor_si64(b, all_set));
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u16(simde_vcgtq_u16(simde_vcombine_u16(a, a), simde_vcombine_u16(b, b)));
   #else
     simde_uint16x4_private
       r_,
@@ -622,6 +636,8 @@ simde_vcgt_u32(simde_uint32x2_t a, simde_uint32x2_t b) {
   #elif defined(SIMDE_X86_MMX_NATIVE)
     __m64 all_set = _mm_set1_pi32(INT32_MIN);
     return _mm_cmpgt_pi32(_mm_xor_si64(a, all_set), _mm_xor_si64(b, all_set));
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u32(simde_vcgtq_u32(simde_vcombine_u32(a, a), simde_vcombine_u32(b, b)));
   #else
     simde_uint32x2_private
       r_,
@@ -650,6 +666,8 @@ simde_uint64x1_t
 simde_vcgt_u64(simde_uint64x1_t a, simde_uint64x1_t b) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vcgt_u64(a, b);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u64(simde_vcgtq_u64(simde_vcombine_u64(a, a), simde_vcombine_u64(b, b)));
   #else
     simde_uint64x1_private
       r_,

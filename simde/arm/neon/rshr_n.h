@@ -270,6 +270,8 @@ simde_vrshr_n_s8 (const simde_int8x8_t a, const int n)
 }
 #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
   #define simde_vrshr_n_s8(a, n) vrshr_n_s8((a), (n))
+#elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+  #define simde_vrshr_n_s8(a, n) simde_vget_low_s8(simde_vrshrq_n_s8(simde_vcombine_s8(a, a), (n)))
 #elif SIMDE_NATURAL_VECTOR_SIZE > 0
   #define simde_vrshr_n_s8(a, n) simde_vsub_s8(simde_vshr_n_s8((a), (n)), simde_vreinterpret_s8_u8( \
     simde_vtst_u8(simde_vreinterpret_u8_s8(a),                              \
@@ -297,6 +299,8 @@ simde_vrshr_n_s16 (const simde_int16x4_t a, const int n)
 }
 #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
   #define simde_vrshr_n_s16(a, n) vrshr_n_s16((a), (n))
+#elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+  #define simde_vrshr_n_s16(a, n) simde_vget_low_s16(simde_vrshrq_n_s16(simde_vcombine_s16(a, a), (n)))
 #elif SIMDE_NATURAL_VECTOR_SIZE > 0
   #define simde_vrshr_n_s16(a, n) simde_vsub_s16(simde_vshr_n_s16((a), (n)), simde_vreinterpret_s16_u16( \
     simde_vtst_u16(simde_vreinterpret_u16_s16(a), \
@@ -324,6 +328,8 @@ simde_vrshr_n_s32 (const simde_int32x2_t a, const int n)
 }
 #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
   #define simde_vrshr_n_s32(a, n) vrshr_n_s32((a), (n))
+#elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+  #define simde_vrshr_n_s32(a, n) simde_vget_low_s32(simde_vrshrq_n_s32(simde_vcombine_s32(a, a), (n)))
 #elif SIMDE_NATURAL_VECTOR_SIZE > 0
   #define simde_vrshr_n_s32(a, n) simde_vsub_s32(simde_vshr_n_s32((a), (n)), \
     simde_vreinterpret_s32_u32(simde_vtst_u32(simde_vreinterpret_u32_s32(a), \
@@ -351,6 +357,8 @@ simde_vrshr_n_s64 (const simde_int64x1_t a, const int n)
 }
 #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
   #define simde_vrshr_n_s64(a, n) vrshr_n_s64((a), (n))
+#elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+  #define simde_vrshr_n_s64(a, n) simde_vget_low_s64(simde_vrshrq_n_s64(simde_vcombine_s64(a, a), (n)))
 #elif SIMDE_NATURAL_VECTOR_SIZE > 0
   #define simde_vrshr_n_s64(a, n) simde_vsub_s64(simde_vshr_n_s64((a), (n)), \
     simde_vreinterpret_s64_u64(simde_vtst_u64(simde_vreinterpret_u64_s64(a), \
@@ -378,6 +386,8 @@ simde_vrshr_n_u8 (const simde_uint8x8_t a, const int n)
 }
 #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
   #define simde_vrshr_n_u8(a, n) vrshr_n_u8((a), (n))
+#elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+  #define simde_vrshr_n_u8(a, n) simde_vget_low_u8(simde_vrshrq_n_u8(simde_vcombine_u8(a, a), (n)))
 #elif SIMDE_NATURAL_VECTOR_SIZE > 0
   #define simde_vrshr_n_u8(a, n) simde_vsub_u8(simde_vshr_n_u8((a), (n)), \
     simde_vtst_u8((a), simde_vdup_n_u8(HEDLEY_STATIC_CAST(uint8_t, 1 << ((n) - 1)))))
@@ -404,6 +414,8 @@ simde_vrshr_n_u16 (const simde_uint16x4_t a, const int n)
 }
 #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
   #define simde_vrshr_n_u16(a, n) vrshr_n_u16((a), (n))
+#elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+  #define simde_vrshr_n_u16(a, n) simde_vget_low_u16(simde_vrshrq_n_u16(simde_vcombine_u16(a, a), (n)))
 #elif SIMDE_NATURAL_VECTOR_SIZE > 0
   #define simde_vrshr_n_u16(a, n) simde_vsub_u16(simde_vshr_n_u16((a), (n)), \
     simde_vtst_u16((a), simde_vdup_n_u16(HEDLEY_STATIC_CAST(uint16_t, 1 << ((n) - 1)))))
@@ -430,6 +442,8 @@ simde_vrshr_n_u32 (const simde_uint32x2_t a, const int n)
 }
 #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
   #define simde_vrshr_n_u32(a, n) vrshr_n_u32((a), (n))
+#elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+  #define simde_vrshr_n_u32(a, n) simde_vget_low_u32(simde_vrshrq_n_u32(simde_vcombine_u32(a, a), (n)))
 #elif SIMDE_NATURAL_VECTOR_SIZE > 0
   #define simde_vrshr_n_u32(a, n) simde_vsub_u32(simde_vshr_n_u32((a), (n)), \
     simde_vtst_u32((a), simde_vdup_n_u32(UINT32_C(1) << ((n) - 1))))
@@ -456,6 +470,8 @@ simde_vrshr_n_u64 (const simde_uint64x1_t a, const int n)
 }
 #if defined(SIMDE_ARM_NEON_A32V7_NATIVE)
   #define simde_vrshr_n_u64(a, n) vrshr_n_u64((a), (n))
+#elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+  #define simde_vrshr_n_u64(a, n) simde_vget_low_u64(simde_vrshrq_n_u64(simde_vcombine_u64(a, a), (n)))
 #elif SIMDE_NATURAL_VECTOR_SIZE > 0
   #define simde_vrshr_n_u64(a, n) simde_vsub_u64(simde_vshr_n_u64((a), (n)), \
     simde_vtst_u64((a), simde_vdup_n_u64(UINT64_C(1) << ((n) - 1))))

@@ -211,6 +211,8 @@ simde_uint32x2_t
 simde_vcgtz_f32(simde_float32x2_t a) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vcgtz_f32(a);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u32(simde_vcgtzq_f32(simde_vcombine_f32(a, a)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vcgt_f32(a, simde_vdup_n_f32(SIMDE_FLOAT32_C(0.0)));
   #else
@@ -239,6 +241,8 @@ simde_uint64x1_t
 simde_vcgtz_f64(simde_float64x1_t a) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vcgtz_f64(a);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u64(simde_vcgtzq_f64(simde_vcombine_f64(a, a)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vcgt_f64(a, simde_vdup_n_f64(SIMDE_FLOAT64_C(0.0)));
   #else
@@ -267,6 +271,8 @@ simde_uint8x8_t
 simde_vcgtz_s8(simde_int8x8_t a) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vcgtz_s8(a);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u8(simde_vcgtzq_s8(simde_vcombine_s8(a, a)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vcgt_s8(a, simde_vdup_n_s8(0));
   #else
@@ -295,6 +301,8 @@ simde_uint16x4_t
 simde_vcgtz_s16(simde_int16x4_t a) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vcgtz_s16(a);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u16(simde_vcgtzq_s16(simde_vcombine_s16(a, a)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vcgt_s16(a, simde_vdup_n_s16(0));
   #else
@@ -323,6 +331,8 @@ simde_uint32x2_t
 simde_vcgtz_s32(simde_int32x2_t a) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vcgtz_s32(a);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u32(simde_vcgtzq_s32(simde_vcombine_s32(a, a)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vcgt_s32(a, simde_vdup_n_s32(0));
   #else
@@ -351,6 +361,8 @@ simde_uint64x1_t
 simde_vcgtz_s64(simde_int64x1_t a) {
   #if defined(SIMDE_ARM_NEON_A64V8_NATIVE)
     return vcgtz_s64(a);
+  #elif SIMDE_ARM_NEON_ENABLE_VECTOR_EXPANSION
+    return simde_vget_low_u64(simde_vcgtzq_s64(simde_vcombine_s64(a, a)));
   #elif SIMDE_NATURAL_VECTOR_SIZE > 0
     return simde_vcgt_s64(a, simde_vdup_n_s64(0));
   #else
